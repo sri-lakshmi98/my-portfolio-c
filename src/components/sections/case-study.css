@@ -1,0 +1,302 @@
+.cs-wrap {
+  max-width: 1040px;
+}
+
+.cs-client {
+  margin: 18px 0 6px;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 241, 228, 0.7);
+}
+
+.cs-title {
+  max-width: 14ch;
+}
+
+.cs-tags {
+  margin: 20px 0 0;
+  max-width: 44rem;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.9;
+  color: rgba(245, 241, 228, 0.65);
+}
+
+.cs-tags i {
+  margin: 0 8px;
+  font-style: normal;
+  opacity: 0.6;
+}
+
+.cs-top {
+  margin: 26px 0 40px;
+}
+
+.cs-live {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid rgba(245, 241, 228, 0.75);
+  border-radius: 999px;
+  color: #f5f1e4;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.25s, color 0.25s, transform 0.25s;
+}
+
+.cs-live:hover,
+.cs-live:focus-visible {
+  background: #f5f1e4;
+  color: #460607;
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.cs-shot {
+  margin: 0 0 72px;
+  overflow: hidden;
+  border: 2px solid rgba(245, 241, 228, 0.85);
+  border-radius: 20px;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.35);
+}
+
+.cs-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cs-block {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 20px 48px;
+  padding: 44px 0;
+  border-top: 1px solid rgba(245, 241, 228, 0.22);
+}
+
+.cs-label {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(245, 241, 228, 0.7);
+}
+
+.cs-body {
+  max-width: 44rem;
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(245, 241, 228, 0.88);
+}
+
+.cs-body p {
+  margin: 0 0 1.1em;
+}
+
+.cs-lead {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.2;
+  color: #fff;
+}
+
+.cs-note {
+  padding-left: 16px;
+  border-left: 2px solid rgba(245, 241, 228, 0.4);
+  font-size: 16px;
+  font-style: italic;
+  color: rgba(245, 241, 228, 0.72);
+}
+
+.cs-cards,
+.cs-steps,
+.cs-list,
+.cs-defs,
+.cs-facts {
+  margin: 0 0 1.4em;
+  padding: 0;
+  list-style: none;
+}
+
+.cs-cards {
+  display: grid;
+  gap: 16px;
+}
+
+.cs-cards li {
+  padding: 22px 24px;
+  border: 1px solid rgba(245, 241, 228, 0.25);
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.cs-cards span,
+.cs-steps h4 span {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: #ffb3c1;
+}
+
+.cs-cards h4,
+.cs-steps h4 {
+  margin: 0 0 8px;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.cs-cards p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.cs-steps li {
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px dashed rgba(245, 241, 228, 0.25);
+}
+
+.cs-steps li:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.cs-list li {
+  position: relative;
+  padding: 6px 0 6px 26px;
+}
+
+.cs-list li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 0.85em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffb3c1;
+}
+
+.cs-defs div,
+.cs-facts div {
+  padding: 14px 0;
+  border-top: 1px solid rgba(245, 241, 228, 0.2);
+}
+
+.cs-defs dt,
+.cs-facts dt {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: #fff;
+}
+
+.cs-facts dt {
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 241, 228, 0.65);
+}
+
+.cs-defs dd,
+.cs-facts dd {
+  margin: 4px 0 0;
+}
+
+.cs-end {
+  margin-top: 28px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(245, 241, 228, 0.22);
+}
+
+.cs-end p {
+  margin: 22px 0 0;
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 3vw, 30px);
+  color: #fff;
+}
+
+.s-link-case {
+  margin-left: 18px;
+}
+
+@media (max-width: 800px) {
+  .cs-block {
+    grid-template-columns: 1fr;
+    padding: 34px 0;
+  }
+
+  .cs-label {
+    position: static;
+  }
+
+  .cs-body {
+    font-size: 17px;
+  }
+
+  .s-link-case {
+    display: inline-block;
+    margin: 12px 0 0;
+  }
+}
+
+/* As a page of its own: a slim header, and room above the first heading. */
+.cs-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px clamp(20px, 4vw, 40px);
+  background: rgba(70, 6, 7, 0.92);
+  border-bottom: 1px solid rgba(245, 241, 228, 0.18);
+  backdrop-filter: blur(10px);
+}
+
+.cs-header a {
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.cs-header a:hover {
+  opacity: 0.6;
+}
+
+.cs-back {
+  padding: 0.45rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  font-size: 15px;
+}
+
+.cs-home {
+  font-size: 24px;
+  letter-spacing: -0.01em;
+}
+
+.cs-mail {
+  font-size: 17px;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+.cs-page {
+  padding-top: 64px;
+}
+
+@media (max-width: 640px) {
+  .cs-home {
+    display: none;
+  }
+}

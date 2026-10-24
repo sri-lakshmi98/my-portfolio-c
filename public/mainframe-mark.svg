@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Mainframe mark</title>
+  <rect width="512" height="512" rx="112" fill="#000000"/>
+  <path d="M256 74c12 0 22 10 22 22v100l71-71c9-9 23-9 32 0 9 9 9 23 0 32l-71 71h100c12 0 22 10 22 22s-10 22-22 22H310l71 71c9 9 9 23 0 32-9 9-23 9-32 0l-71-71v100c0 12-10 22-22 22s-22-10-22-22V304l-71 71c-9 9-23 9-32 0-9-9-9-23 0-32l71-71H102c-12 0-22-10-22-22s10-22 22-22h100l-71-71c-9-9-9-23 0-32 9-9 23-9 32 0l71 71V96c0-12 10-22 22-22Z" fill="#ffffff"/>
+</svg>
