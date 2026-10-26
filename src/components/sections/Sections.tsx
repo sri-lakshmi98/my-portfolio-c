@@ -357,16 +357,6 @@ const TEAMS = [
     ],
   },
   {
-    company: 'First Welding Certification Pvt. Ltd.',
-    role: 'Admin Manager',
-    focus: 'Web, SEO and operations',
-    points: [
-      'Designed UI layouts and contributed directly to building the primary company website',
-      'Led SEO, digital marketing and content strategy to grow visibility and organic search reach',
-      'Managed accounts, monthly budgets, vendors and audit coordination',
-    ],
-  },
-  {
     company: 'Layam Group',
     role: 'Jr. Executive',
     focus: 'Executive support and procurement',
@@ -374,6 +364,16 @@ const TEAMS = [
       'Primary administrative contact and Secretary to the CEO: calendars, daily task allocation, high-priority operations',
       'End-to-end vendor relations and procurement: purchase orders, inventory records, invoice checks',
       'Coordinated internal departments on staffing and delivery of corporate initiatives',
+    ],
+  },
+  {
+    company: 'First Welding Certification Pvt. Ltd.',
+    role: 'Admin Manager',
+    focus: 'Web, SEO and operations',
+    points: [
+      'Designed UI layouts and contributed directly to building the primary company website',
+      'Led SEO, digital marketing and content strategy to grow visibility and organic search reach',
+      'Managed accounts, monthly budgets, vendors and audit coordination',
     ],
   },
 ];

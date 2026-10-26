@@ -1,6 +1,7 @@
 import { Fragment, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import {
   CameraSiteIllustration,
+  EcommerceIllustration,
   ManagementIllustration,
   MarketingIllustration,
   TestingIllustration,
@@ -30,20 +31,20 @@ const STATIONS: Station[] = [
     art: <TestingIllustration />,
   },
   {
-    id: 'first-welding',
-    title: 'First Welding Certification',
-    line: 'Admin Manager',
-    text: 'Designed the UI layouts for the company website and led its SEO, content and digital marketing, while running admin, accounts and vendors.',
-    tags: ['Website UI', 'SEO', 'Operations'],
-    art: <WebsiteIllustration />,
-  },
-  {
     id: 'layam',
     title: 'Layam Group',
     line: 'Jr. Executive',
     text: 'Secretary to the CEO: calendars, priorities and cross-team coordination, plus vendor and procurement workflows from purchase orders to invoice checks.',
     tags: ['Executive support', 'Vendors', 'Procurement'],
     art: <ManagementIllustration />,
+  },
+  {
+    id: 'first-welding',
+    title: 'First Welding Certification',
+    line: 'Admin Manager',
+    text: 'Designed the UI layouts for the company website and led its SEO, content and digital marketing, while running admin, accounts and vendors.',
+    tags: ['Website UI', 'SEO', 'Operations'],
+    art: <WebsiteIllustration />,
   },
   {
     id: 'aadithya',
@@ -57,11 +58,20 @@ const STATIONS: Station[] = [
   {
     id: 'anu-sathya',
     title: 'Shree Anu Sathya Designers',
-    line: 'Freelance, part two',
+    line: 'Digital marketing',
     text: 'Social media manager: short-form video on Instagram that reached 17,925 views in the first 30 days.',
     tags: ['Instagram', 'Reels', 'Analytics'],
     art: <MarketingIllustration />,
     link: { href: 'https://www.instagram.com/shree_anu_sathya_designers/', label: 'See the Instagram page' },
+  },
+  {
+    id: 'nand-bhabhi',
+    title: 'Nand Bhabhi',
+    line: 'Clothing E-commerce',
+    text: 'Clothing e-commerce website: reimagined client reference with video-led product storytelling, an animated delivery tracking concept, and an adaptable admin storefront.',
+    tags: ['E-commerce', 'UI/UX Design', 'Storefront'],
+    art: <EcommerceIllustration />,
+    link: { href: '#/case-study/nand-bhabhi', label: 'Read the case study' },
   },
 ];
 

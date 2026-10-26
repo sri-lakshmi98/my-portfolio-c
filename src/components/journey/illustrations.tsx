@@ -226,3 +226,55 @@ export function CameraSiteIllustration() {
     </svg>
   );
 }
+
+/** Nand Bhabhi: clothing e-commerce website with showcase banner and product collections. */
+export function EcommerceIllustration() {
+  return (
+    <svg className="j-art" viewBox="0 0 360 270" aria-hidden="true" focusable="false">
+      <rect x="20" y="24" width="320" height="222" rx="14" fill="#fffdf6" stroke="#460607" strokeWidth="2.5" />
+      <path d="M20 52h320" stroke="#460607" strokeWidth="2.5" />
+      <circle cx="40" cy="38" r="5" fill="#e8453c" />
+      <circle cx="56" cy="38" r="5" fill="#f5e211" stroke="#460607" strokeWidth="1" />
+      <circle cx="72" cy="38" r="5" fill="#2ba0ff" />
+      <rect x="100" y="31" width="150" height="14" rx="7" fill="#f5f1e4" stroke="#460607" strokeWidth="1.5" />
+
+      {/* Hero Banner */}
+      <rect className="fin" style={d(0.4)} x="34" y="62" width="292" height="96" rx="10" fill="#f5f1e4" stroke="#460607" strokeWidth="1.5" />
+      <rect className="fin" style={d(0.7)} x="48" y="76" width="120" height="12" rx="4" fill="#460607" />
+      <rect className="fin" style={d(0.85)} x="48" y="94" width="90" height="8" rx="4" fill="#a3a69e" />
+      <rect className="fin" style={d(1.0)} x="48" y="106" width="75" height="8" rx="4" fill="#a3a69e" />
+      <rect className="fin btn-pulse" style={d(1.2)} x="48" y="122" width="64" height="22" rx="11" fill="#e8453c" />
+      <rect className="fin" style={d(1.2)} x="62" y="130" width="36" height="5" rx="2.5" fill="#fffdf6" />
+
+      {/* Ethnic fashion / Saree drape motif on right */}
+      <g className="fin-pop" style={d(1.4)}>
+        <rect x="220" y="70" width="88" height="80" rx="8" fill="#e8453c" fillOpacity="0.15" stroke="#e8453c" strokeWidth="1.5" />
+        <path d="M250 82q14-8 28 0t-4 36-24 24z" fill="#e8453c" />
+        <circle cx="264" cy="78" r="7" fill="#f5e211" stroke="#460607" strokeWidth="1.2" />
+        <rect x="286" y="68" width="16" height="20" rx="4" fill="#2ba0ff" stroke="#460607" strokeWidth="1.5" />
+        <path d="M290 68v-3a4 4 0 0 1 8 0v3" fill="none" stroke="#460607" strokeWidth="1.5" />
+      </g>
+
+      {/* Product Cards below */}
+      {[0, 1, 2].map((i) => (
+        <g key={i}>
+          <rect
+            className="fin"
+            style={d(1.6 + i * 0.2)}
+            x={34 + i * 100}
+            y={166}
+            width={92}
+            height={68}
+            rx="10"
+            fill={['#fffdf6', '#f5f1e4', '#fffdf6'][i]}
+            stroke="#460607"
+            strokeWidth="1.6"
+          />
+          <rect x={44 + i * 100} y={174} width={72} height={34} rx="6" fill={['#e8453c', '#2ba0ff', '#8ed462'][i]} fillOpacity="0.8" />
+          <rect x={44 + i * 100} y={214} width={48} height={6} rx="3" fill="#460607" fillOpacity="0.8" />
+          <rect x={44 + i * 100} y={223} width={30} height={5} rx="2.5" fill="#e8453c" />
+        </g>
+      ))}
+    </svg>
+  );
+}
