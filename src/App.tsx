@@ -60,7 +60,7 @@ function Home() {
         setIsHeroVisible(entry.isIntersecting);
       },
       {
-        threshold: 0.35,
+        threshold: 0.15,
       }
     );
 
@@ -285,7 +285,15 @@ function Home() {
         </div>
       </main>
 
-      <JourneySection />
+            {/* Sections fade and rise in smoothly when hero scrolls away */}
+      <div
+        className="transition-[opacity,transform] duration-700 ease-out"
+        style={{
+          opacity: isHeroVisible ? 0.75 : 1,
+          transform: isHeroVisible ? 'translateY(18px)' : 'translateY(0)',
+        }}
+      >
+<JourneySection />
       <Services />
       <Work />
       <Process />
@@ -293,6 +301,7 @@ function Home() {
       <Skills />
       <Contact />
       <Footer />
+      </div>
     </div>
   );
 }
