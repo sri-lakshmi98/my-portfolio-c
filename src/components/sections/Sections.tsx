@@ -174,24 +174,29 @@ const PROJECTS = [
     tags: ['UX testing', 'Usability'],
   },
   {
-    id: 'new-arrival',
-    kind: 'E-commerce concept',
-    name: 'New Arrival Experience',
-    text: 'A USP idea for online selling: sellers upload vertical videos and reels to promote their products, the format that is already hugely popular on social media in the Indian market.',
-    points: ['Video-first product discovery', 'Built for how people already shop and scroll'],
-    cta: 'Open the concept',
-    href: 'https://new-arrival-experience.vercel.app/',
+    id: 'nand-bhabhi',
+    kind: 'Clothing E-commerce Website',
+    name: 'Nand Bhabhi',
+    text: 'A familiar vision, reimagined with thoughtful interactions. Created around the client\'s visual reference and business requirements, introducing video-led product storytelling, delivery transparency, and flexible storefront management.',
+    points: [
+      'Video-led product presentation for new arrivals',
+      'Animated delivery tracking with courier dispatch & distance',
+      'Flexible admin panel for template and banner updates',
+    ],
+    cta: 'Read the case study',
+    href: '#/case-study/nand-bhabhi',
+    caseHref: '#/case-study/nand-bhabhi',
     art: (
       <img
         className="s-shot"
-        src="/work/new-arrival.webp"
+        src="/work/nand-bhabhi.jpg"
         width="1400"
-        height="699"
+        height="850"
         loading="lazy"
-        alt="A fashion store's new arrivals section showing three vertical video tiles with a watch-the-story prompt"
+        alt="Nand Bhabhi clothing e-commerce website home page showcasing ethnic wear, sarees, lehengas, and festive fashion"
       />
     ),
-    tags: ['Product idea', 'E-commerce', 'Mobile first'],
+    tags: ['E-commerce', 'Ethnic Fashion', 'UI/UX Design', 'Store Management'],
   },
   {
     id: 'anusathya',
@@ -254,10 +259,17 @@ export function Work() {
               aria-labelledby={`${p.id}-name`}
               data-reveal
             >
-              <a className="s-art" href={p.href} target="_blank" rel="noreferrer" tabIndex={-1} aria-hidden="true">
+              <a
+                className="s-art"
+                href={p.href}
+                target={p.href.startsWith('#') ? undefined : '_blank'}
+                rel={p.href.startsWith('#') ? undefined : 'noreferrer'}
+                tabIndex={-1}
+                aria-hidden="true"
+              >
                 {p.art}
                 <span className="s-art-chip">
-                  Live <Arrow />
+                  {p.href.startsWith('#') ? 'Case study' : 'Live'} <Arrow />
                 </span>
               </a>
               <div className="s-pcopy">
@@ -276,12 +288,17 @@ export function Work() {
                     <li key={t}>{t}</li>
                   ))}
                 </ul>
-                <a className="s-link" href={p.href} target="_blank" rel="noreferrer">
+                <a
+                  className="s-link"
+                  href={p.href}
+                  target={p.href.startsWith('#') ? undefined : '_blank'}
+                  rel={p.href.startsWith('#') ? undefined : 'noreferrer'}
+                >
                   {p.cta}
-                  <span className="sr-only"> (opens in a new tab)</span>
+                  {!p.href.startsWith('#') && <span className="sr-only"> (opens in a new tab)</span>}
                   <Arrow />
                 </a>
-                {'caseHref' in p && (
+                {'caseHref' in p && p.href !== p.caseHref && (
                   <a className="s-link s-link-case" href={p.caseHref}>
                     Read the case study
                   </a>
