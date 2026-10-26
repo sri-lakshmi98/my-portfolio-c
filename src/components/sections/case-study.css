@@ -48,7 +48,7 @@
 .cs-live:hover,
 .cs-live:focus-visible {
   background: #f5f1e4;
-  color: #460607;
+  color: #d83a56;
   transform: translateY(-2px);
   outline: none;
 }
@@ -258,7 +258,7 @@
   justify-content: space-between;
   gap: 16px;
   padding: 16px clamp(20px, 4vw, 40px);
-  background: rgba(70, 6, 7, 0.92);
+  background: rgba(216, 58, 86, 0.92);
   border-bottom: 1px solid rgba(245, 241, 228, 0.18);
   backdrop-filter: blur(10px);
 }

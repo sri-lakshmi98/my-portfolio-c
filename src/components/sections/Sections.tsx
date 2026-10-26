@@ -242,7 +242,7 @@ const PROJECTS = [
 export function Work() {
   return (
     <section id="work" className="s-sec s-cream" aria-labelledby="work-title">
-      <Wave fill="#460607" flip />
+      <Wave fill="#d83a56" flip />
       <div className="s-wrap">
         <Label>Selected work</Label>
         <h2 id="work-title" className="s-title" data-reveal>
@@ -381,7 +381,7 @@ const TEAMS = [
 export function Experience() {
   return (
     <section id="experience" className="s-sec s-cream" aria-labelledby="exp-title">
-      <Wave fill="#460607" flip />
+      <Wave fill="#d83a56" flip />
       <div className="s-wrap">
         <Label>Where I&apos;ve put this to work</Label>
         <h2 id="exp-title" className="s-title" data-reveal>
@@ -415,7 +415,7 @@ export function Contact() {
   const { copied, copy } = useCopy(EMAIL);
   return (
     <section id="contact" className="s-sec s-cream s-contact" aria-labelledby="contact-title">
-      <Wave fill="#460607" flip />
+      <Wave fill="#d83a56" flip />
       <div className="s-wrap">
         <div className="s-avail" data-reveal>
           <p className="s-avail-pill">
