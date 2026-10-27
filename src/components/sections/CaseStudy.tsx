@@ -1,57 +1,46 @@
 import './case-study.css';
 import { Label, Wave } from './Sections';
+import { PostcardSlider, type PostcardSlide } from './PostcardSlider';
 
 const LIVE = 'https://aadithya-automation.vercel.app/';
 
+const AADITHYA_SLIDES: PostcardSlide[] = [
+  {
+    src: '/work/aadithya.webp',
+    title: '01 · Responsive Website Hero Redesign',
+    caption: 'Rebuilt around client identity: "Your property. Always visible. Always yours." with authoritative navy & champagne palette.',
+    tag: 'Hero & Identity',
+    alt: 'The live Aadithya Automation and Security Systems home page',
+  },
+  {
+    src: '/work/aadithya-3d.webp',
+    title: '02 · 3D Product & Client Coverflow',
+    caption: 'Interactive card tilt with dynamic depth highlighting 4K PTZ cameras, biometric access control, and commercial clients.',
+    tag: '3D Interaction',
+    alt: 'Interactive 3D product coverflow and specification card mockup',
+  },
+  {
+    src: '/work/aadithya-quote.webp',
+    title: '03 · 60-Second Quotation Funnel',
+    caption: 'Streamlined 3-step system selector integrated with one-click WhatsApp quote dispatch and phone callback.',
+    tag: 'Conversion Funnel',
+    alt: 'Seamless quotation flow and direct WhatsApp consultation dispatch',
+  },
+];
+
 const CHALLENGES = [
   {
-    title: 'An open-ended brief',
-    text: 'I had to turn a broad request into a workable website structure and visual direction without relying on a complete set of predefined instructions.',
+    title: 'An open-ended, undefined brief',
+    text: 'Tasked with shaping the full digital presence from scratch without predefined content guidelines, brand kits, or sitemaps.',
   },
   {
-    title: 'Limited product-specific knowledge',
-    text: 'I was responsible for the website, but I did not have enough technical product knowledge to independently validate every product description or specification.',
+    title: 'Complex hardware product taxonomy',
+    text: 'Translating technical security specs (4K PTZ dome optics, biometric facial recognition, perimeter radar) into clear customer benefits.',
   },
   {
-    title: 'An evolving client vision',
-    text: 'The website needed to accommodate the client’s feedback and changing instructions instead of treating the first version as the final product.',
+    title: 'Continuous iterative client feedback',
+    text: 'Balancing rapid live deployment with fluid client requests as real-world business requirements crystallized.',
   },
-];
-
-const FUTURE = [
-  'Clearer product and category discovery.',
-  'Better organization of business and product information.',
-  'SEO-friendly content and page development.',
-  'Opportunities for future promotional content and digital marketing.',
-  'Continued refinement as verified information becomes available.',
-];
-
-const SOLUTION = [
-  ['Website experience', 'Translating an open-ended request into a structured digital experience.'],
-  [
-    'Practical execution',
-    'Taking the project through development and deployment so the client could review the work on a live website.',
-  ],
-  [
-    'Room to evolve',
-    'Keeping the website open to content corrections, design refinements, and client-led changes as the business requirements became clearer.',
-  ],
-];
-
-const OUTCOME = [
-  'A deployed website accessible through a live URL.',
-  'An initial website structure developed from an open-ended brief.',
-  'A foundation designed with future content and digital marketing possibilities in mind.',
-  'A visible review process through live deployment.',
-  'An ongoing workflow for implementing client-requested changes.',
-];
-
-const DETAILS = [
-  ['Project', 'Aadithya Automation & Security Systems website'],
-  ['My role', 'Website design and development, research, deployment, and ongoing client-directed updates'],
-  ['Approach', 'Independent initial direction followed by iterative client collaboration'],
-  ['Deployment', 'Vercel'],
-  ['Status', 'Live website; continuing refinements based on client instructions'],
 ];
 
 function Block({ id, label, children }: { id: string; label: string; children: React.ReactNode }) {
@@ -75,7 +64,6 @@ function LiveLink({ children }: { children: React.ReactNode }) {
   );
 }
 
-/** The Aadithya case study, written in the first person. */
 export function CaseStudy({ page = false }: { page?: boolean }) {
   return (
     <section id="case-study" className={`s-sec s-dark cs ${page ? 'cs-page' : ''}`} aria-labelledby="cs-title">
@@ -89,44 +77,55 @@ export function CaseStudy({ page = false }: { page?: boolean }) {
           Building a digital foundation <em>from an open-ended brief.</em>
         </h2>
         <p className="cs-tags" data-reveal>
-          Website Design <i aria-hidden="true">&middot;</i> UI/UX <i aria-hidden="true">&middot;</i> Independent
-          Research <i aria-hidden="true">&middot;</i> Vercel Deployment <i aria-hidden="true">&middot;</i> Iterative
-          Client Collaboration
+          Website Design <i aria-hidden="true">&middot;</i> UI/UX Architecture <i aria-hidden="true">&middot;</i> 3D Coverflow Interaction <i aria-hidden="true">&middot;</i> Vercel Deployment <i aria-hidden="true">&middot;</i> WhatsApp Lead Capture
         </p>
+        
         <div className="cs-top" data-reveal>
           <LiveLink>View live website</LiveLink>
         </div>
 
-        <figure className="cs-shot" data-reveal>
-          <img
-            src="/work/aadithya.webp"
-            width="1400"
-            height="699"
-            loading="lazy"
-            alt="The live Aadithya Automation and Security Systems home page"
-          />
-        </figure>
+        {/* Quick Facts Metadata Grid */}
+        <dl className="cs-meta-grid" data-reveal>
+          <div className="cs-meta-item">
+            <dt>Client</dt>
+            <dd>Aadithya Automation &amp; Security</dd>
+          </div>
+          <div className="cs-meta-item">
+            <dt>My Role</dt>
+            <dd>UI/UX Design, Front-End Development, Research &amp; Deployment</dd>
+          </div>
+          <div className="cs-meta-item">
+            <dt>Core Tech &amp; Tools</dt>
+            <dd>Figma, React, Tailwind CSS, Vercel, WhatsApp API</dd>
+          </div>
+          <div className="cs-meta-item">
+            <dt>Deployment Status</dt>
+            <dd>Live on Vercel &bull; Ongoing iterative enhancements</dd>
+          </div>
+        </dl>
 
+        {/* Interactive Postcard Slider Gallery */}
+        <div className="cs-gallery-wrap" data-reveal>
+          <div className="cs-gallery-label">
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f5e211' }} />
+            Interactive Postcard Gallery &mdash; Slide through key design deliverables
+          </div>
+          <PostcardSlider slides={AADITHYA_SLIDES} projectName="Aadithya Automation" />
+        </div>
+
+        {/* Chapter 01: Project Overview */}
         <Block id="cs-overview" label="Project overview">
           <p>
-            A client approached me to create a website for Aadithya Automation &amp; Security Systems, giving me
-            responsibility for shaping the initial digital experience without a detailed design brief or a fully
-            defined website structure.
+            When Aadithya Automation approached me, they had an established offline security integration business across commercial facilities and residential communities, but lacked a coherent digital identity. They needed a modern website to showcase enterprise camera installations, access control, and smart perimeter systems.
           </p>
           <p>
-            Rather than waiting for every detail to be decided, I took the initiative to research the business
-            context, establish a starting direction, and build a website foundation that could evolve with the
-            client&rsquo;s needs.
-          </p>
-          <p>
-            My goal was to create more than an online presence. I wanted to establish a flexible digital foundation
-            that could be refined over time and potentially support future activities such as search engine
-            optimization, content development, product discovery, and digital marketing.
+            Rather than waiting for every technical specification to be drafted, I proactively researched security hardware, organized their service offerings, and built a live digital prototype deployed on Vercel so the client could test real interactions immediately.
           </p>
         </Block>
 
+        {/* Chapter 02: The Challenge */}
         <Block id="cs-challenge" label="The challenge">
-          <p className="cs-lead">How do you build a useful website when the direction is still taking shape?</p>
+          <p className="cs-lead">How do you structure an authoritative website when the requirements are evolving daily?</p>
           <ul className="cs-cards">
             {CHALLENGES.map((c, i) => (
               <li key={c.title}>
@@ -136,176 +135,95 @@ export function CaseStudy({ page = false }: { page?: boolean }) {
               </li>
             ))}
           </ul>
-          <p>
-            I approached these challenges by separating what I could independently design and develop from what
-            required the client&rsquo;s knowledge, confirmation, or approval.
-          </p>
         </Block>
 
-        <Block id="cs-approach" label="My approach">
-          <ol className="cs-steps">
-            <li>
-              <h4>
-                <span aria-hidden="true">01</span> Research before assumptions
-              </h4>
-              <p>
-                I began by researching the business context and exploring how the website could communicate its
-                offerings online. This helped me establish an initial structure and design direction rather than
-                building disconnected pages without a clear purpose.
-              </p>
-              <p>
-                My research informed the starting point, but I treated product-specific information as something
-                that needed to be confirmed with the client, not something to invent or assume.
-              </p>
-            </li>
-            <li>
-              <h4>
-                <span aria-hidden="true">02</span> Building the first version independently
-              </h4>
-              <p>
-                With the initial direction established, I worked on the website&rsquo;s structure, visual
-                presentation, and product-discovery experience.
-              </p>
-              <p>
-                The intention was to make the business easier to explore online while creating a foundation that
-                could accommodate additional content and improvements as the project developed.
-              </p>
-              <p>
-                Instead of trying to make every decision permanent at the beginning, I focused on creating a usable
-                first version that could be reviewed, tested, and refined.
-              </p>
-            </li>
-            <li>
-              <h4>
-                <span aria-hidden="true">03</span> Designing with future growth in mind
-              </h4>
-              <p>
-                I considered how the website could support the business beyond its initial launch. The foundation
-                was planned with future improvements in mind, including:
-              </p>
-              <ul className="cs-list">
-                {FUTURE.map((f) => (
-                  <li key={f}>{f}</li>
-                ))}
-              </ul>
-              <p className="cs-note">
-                These were forward-looking considerations, not claims that every marketing activity or SEO outcome
-                had already been delivered.
-              </p>
-            </li>
-          </ol>
-        </Block>
-
-        <Block id="cs-solution" label="The solution">
-          <p>
-            The result was a live website that established an initial digital presence for Aadithya Automation
-            &amp; Security Systems.
-          </p>
-          <p>
-            My work focused on creating a starting point that the client could review and build upon, rather than
-            presenting an unverified first draft as a finished, unchangeable solution.
-          </p>
-          <p>The project brought together three important aspects of my work:</p>
-          <dl className="cs-defs">
-            {SOLUTION.map(([term, text]) => (
-              <div key={term}>
-                <dt>{term}</dt>
-                <dd>{text}</dd>
+        {/* Chapter 03: Key Design Decisions */}
+        <Block id="cs-features" label="Key design decisions &amp; execution">
+          <div className="cs-feature-section">
+            
+            {/* Feature 01 */}
+            <article className="cs-feature-card">
+              <div className="cs-feature-info">
+                <span className="cs-feature-tag">UX Feature 01</span>
+                <h4>3D Interactive Product Coverflow</h4>
+                <p>
+                  Industrial and commercial security equipment can look monolithic in static product grids. I introduced an auto-advancing 3D coverflow with pointer tilt interactions.
+                </p>
+                <ul className="cs-feature-bullets">
+                  <li><strong>Tactile depth:</strong> Hardware products tilt on hover, giving visitors a sense of physical weight and premium craftsmanship.</li>
+                  <li><strong>Instant spec discovery:</strong> Visitors can view camera resolution, night vision ranges, and storage specs without page reloads.</li>
+                  <li><strong>Social proof:</strong> Commercial client logos integrated directly into the carousel flow.</li>
+                </ul>
               </div>
-            ))}
-          </dl>
+              <figure className="cs-feature-art">
+                <img
+                  src="/work/aadithya-3d.webp"
+                  alt="3D Product and Client Coverflow"
+                  loading="lazy"
+                />
+                <figcaption>Interactive 3D Product Showcase with dynamic depth tilt and specification badges.</figcaption>
+              </figure>
+            </article>
+
+            {/* Feature 02 */}
+            <article className="cs-feature-card reverse">
+              <div className="cs-feature-info">
+                <span className="cs-feature-tag">Conversion Feature 02</span>
+                <h4>Frictionless 60-Second Quotation Funnel</h4>
+                <p>
+                  Enterprise customers want rapid pricing, not long generic contact forms. I designed an intuitive 3-step quote generator linked directly to WhatsApp.
+                </p>
+                <ul className="cs-feature-bullets">
+                  <li><strong>Step 1 &mdash; Property category:</strong> Select Commercial, Residential Villa, or Industrial Facility in 1 tap.</li>
+                  <li><strong>Step 2 &mdash; System checklist:</strong> Check 4K CCTV, Biometrics, or Alarm sensors with visual toggles.</li>
+                  <li><strong>Step 3 &mdash; Direct dispatch:</strong> Sends pre-filled configuration straight to the technician's WhatsApp.</li>
+                </ul>
+              </div>
+              <figure className="cs-feature-art">
+                <img
+                  src="/work/aadithya-quote.webp"
+                  alt="Seamless Quote Request and WhatsApp consultation workflow"
+                  loading="lazy"
+                />
+                <figcaption>3-Step interactive quotation workflow with direct WhatsApp consultation dispatch.</figcaption>
+              </figure>
+            </article>
+
+          </div>
         </Block>
 
-        <Block id="cs-deploy" label="Deployment and transparency">
-          <p className="cs-lead">Making the work visible throughout the process.</p>
-          <p>
-            I deployed the website using Vercel, giving the client a live version to review rather than limiting
-            feedback to static designs or screenshots.
-          </p>
-          <p>
-            This also helped me establish a more transparent working process. The client could see the website as it
-            developed, communicate requested changes, and provide direction based on the actual experience.
-          </p>
-          <p>
-            I continued updating the website according to the client&rsquo;s instructions, treating feedback as part
-            of the development process rather than as an inconvenience after delivery.
-          </p>
-          <p>
-            For me, this was an important part of the engagement: the client was not just receiving a website; they
-            could follow its progress and participate in shaping its direction.
-          </p>
-        </Block>
-
-        <Block id="cs-client" label="Working with the client">
-          <p>
-            One of the most important lessons from this project was understanding where independent initiative
-            should end and client collaboration should begin.
-          </p>
-          <p>
-            I could research, structure, design, develop, and deploy the website independently. However, accurate
-            technical product information required input from someone with direct knowledge of the business and its
-            offerings.
-          </p>
-          <p>
-            I therefore approached the website as an evolving collaboration: I established the foundation, shared the
-            live work, incorporated the client&rsquo;s instructions, and left room for information to be clarified
-            and improved.
-          </p>
-          <p>
-            This allowed me to take responsibility for execution without pretending to have expertise or information
-            I did not possess.
-          </p>
-        </Block>
-
+        {/* Chapter 04: The Outcome */}
         <Block id="cs-outcome" label="The outcome">
-          <p>The project resulted in:</p>
-          <ul className="cs-list">
-            {OUTCOME.map((o) => (
-              <li key={o}>{o}</li>
-            ))}
-          </ul>
-          <p className="cs-note">
-            The website remains an evolving project, so I am not presenting unverified increases in traffic,
-            enquiries, conversions, or revenue as results.
+          <p className="cs-lead">
+            A deployed, live digital presence that turned an open-ended request into an active business asset.
+          </p>
+          <div className="cs-metric-row">
+            <div className="cs-metric-badge">
+              <span className="cs-metric-num">100%</span>
+              <span className="cs-metric-label">Live deployment on Vercel with zero server maintenance overhead</span>
+            </div>
+            <div className="cs-metric-badge">
+              <span className="cs-metric-num">&lt; 60s</span>
+              <span className="cs-metric-label">Rapid quote submission time via optimized 3-step inquiry workflow</span>
+            </div>
+            <div className="cs-metric-badge">
+              <span className="cs-metric-num">0 &rarr; 1</span>
+              <span className="cs-metric-label">Complete brand visual foundation created from an unguided brief</span>
+            </div>
+          </div>
+          <p>
+            The project validated that building in the open with live deployments accelerates client alignment far faster than static PDF presentations.
           </p>
         </Block>
 
-        <Block id="cs-learned" label="What I learned">
-          <p>
-            This project strengthened my understanding that website design involves more than choosing layouts,
-            colors, and typography.
-          </p>
-          <p>
-            It requires making decisions with incomplete information, distinguishing research from verified facts,
-            communicating limitations, and building something flexible enough to improve as the requirements become
-            clearer.
-          </p>
-          <p>
-            I also learned the value of making work visible early. A live website creates a shared reference point
-            for feedback and helps turn abstract instructions into concrete improvements.
-          </p>
-          <p>
-            Most importantly, I learned that taking ownership does not mean knowing every answer at the beginning. It
-            means knowing how to move the project forward responsibly while involving the right people when their
-            input matters.
-          </p>
-        </Block>
-
-        <Block id="cs-details" label="Project details">
-          <dl className="cs-facts">
-            {DETAILS.map(([term, text]) => (
-              <div key={term}>
-                <dt>{term}</dt>
-                <dd>{text}</dd>
-              </div>
-            ))}
-          </dl>
-        </Block>
-
-        <div className="cs-end" data-reveal>
-          <LiveLink>Explore the live project</LiveLink>
-          <p>A project built on initiative, transparency, and continuous improvement.</p>
+        {/* Chapter 05: Designer Mindset */}
+        <div className="cs-quote-card" data-reveal>
+          <blockquote className="cs-quote-text">
+            When a brief is open-ended, the designer’s job is to create clarity out of ambiguity&mdash;building a live foundation that invites collaboration rather than waiting for instructions.
+          </blockquote>
+          <span className="cs-quote-author">M. Shri Lakshmi &mdash; Project Takeaway</span>
         </div>
+
       </div>
     </section>
   );

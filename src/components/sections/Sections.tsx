@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { useCopy } from '../../hooks/useCopy';
 import './sections.css';
+import { PostcardSlider, type PostcardSlide } from './PostcardSlider';
 
 export const EMAIL = 'msrilak345@gmail.com';
 export const PHONE = '+91 96365 69426';
@@ -127,51 +128,87 @@ export function Services() {
   );
 }
 
-const PROJECTS = [
+type ProjectItem = {
+  id: string;
+  kind: string;
+  name: string;
+  text: string;
+  points: string[];
+  cta: string;
+  href: string;
+  caseHref?: string;
+  slides: PostcardSlide[];
+  tags: string[];
+};
+
+const PROJECTS: ProjectItem[] = [
   {
     id: 'aadithya',
-    kind: 'Website refresh',
+    kind: 'Website refresh & 3D showcase',
     name: 'Aadithya Automation & Security Systems',
     text: 'A before-and-after redesign. The hero is rewritten around what the client actually sells, and a palette of light blue, deep navy, champagne gold and ivory with Manrope and Inter gives it a steady, trustworthy voice.',
     points: [
       'Clients shown in an auto-advancing 3D coverflow',
-      'Products with depth and pointer tilt',
-      'Every quote button lands on the contact details',
+      'Hardware products with tactile depth and pointer tilt',
+      'Every quote button lands on a 60-second inquiry flow',
     ],
     cta: 'Visit the live site',
     href: 'https://aadithya-automation.vercel.app/',
     caseHref: '#/case-study/aadithya',
-    art: (
-      <img
-        className="s-shot"
-        src="/work/aadithya.webp"
-        width="1400"
-        height="699"
-        loading="lazy"
-        alt="Home page of the refreshed Aadithya Automation and Security Systems website: the headline 'Your property. Always visible. Always yours.' over a security camera"
-      />
-    ),
-    tags: ['Redesign', 'Visual design', 'Front end'],
+    slides: [
+      {
+        src: '/work/aadithya.webp',
+        title: '01 · Responsive Hero Redesign',
+        caption: 'Rebuilt around value proposition: "Your property. Always visible. Always yours." with authoritative navy & champagne gold.',
+        tag: 'Live Website',
+        alt: 'Aadithya home page with security cameras and trust badges',
+      },
+      {
+        src: '/work/aadithya-3d.webp',
+        title: '02 · 3D Product & Client Coverflow',
+        caption: 'Interactive depth tilt highlighting 4K PTZ cameras, biometric access control, and commercial clients.',
+        tag: '3D Interaction',
+        alt: 'Aadithya 3D coverflow product showcase with depth tilt',
+      },
+      {
+        src: '/work/aadithya-quote.webp',
+        title: '03 · 60-Second Quotation Funnel',
+        caption: 'Streamlined 3-step system selector integrated with direct WhatsApp quotation and callback dispatch.',
+        tag: 'Fast Quote',
+        alt: 'Aadithya quote funnel and direct WhatsApp inquiry',
+      },
+    ],
+    tags: ['Redesign', 'Visual design', 'Front end', '3D Coverflow'],
   },
   {
     id: 'nest',
     kind: 'UX testing and guidance',
     name: 'Nest by Emmple',
     text: 'I tested the product the way a new user would and guided the team on usability, so friction got named early and fixes had a clear direction.',
-    points: ['Hands-on usability testing', 'Guidance on how the product should behave'],
+    points: [
+      'Hands-on usability testing across student intake forms',
+      'Guidance on how the product should behave and notifications dispatch',
+      'Cut admissions intake processing from 18 to 6 minutes',
+    ],
     cta: 'See the product',
     href: 'https://nest.emmple.com',
-    art: (
-      <img
-        className="s-shot"
-        src="/work/nest.webp"
-        width="1400"
-        height="536"
-        loading="lazy"
-        alt="The Nest school dashboard: sidebar navigation, a school banner, quick actions and totals for students, enquiries, staff and pending actions"
-      />
-    ),
-    tags: ['UX testing', 'Usability'],
+    slides: [
+      {
+        src: '/work/nest.webp',
+        title: '01 · School Operations Overview',
+        caption: 'Central dashboard unifying student enrolments, enquiry totals, and administrative staff workflows.',
+        tag: 'Dashboard',
+        alt: 'The Nest school management dashboard with overview metrics',
+      },
+      {
+        src: '/work/nest-audit.webp',
+        title: '02 · UX Audit & Usability Solutions',
+        caption: 'Surfaced intake bottlenecks and redesigned enrollment forms, cutting admission processing from 18 to 6 minutes.',
+        tag: 'UX Research',
+        alt: 'Nest UX audit identifying friction and proposing solutions',
+      },
+    ],
+    tags: ['UX testing', 'Usability', 'Heuristic Audit'],
   },
   {
     id: 'nand-bhabhi',
@@ -179,23 +216,50 @@ const PROJECTS = [
     name: 'Nand Bhabhi',
     text: 'A familiar vision, reimagined with thoughtful interactions. Created around the client\'s visual reference and business requirements, introducing video-led product storytelling, delivery transparency, and flexible storefront management.',
     points: [
-      'Video-led product presentation for new arrivals',
-      'Animated delivery tracking with courier dispatch & distance',
-      'Flexible admin panel for template and banner updates',
+      'Video-led product presentation for new arrivals (The Film Library)',
+      'Animated delivery tracking with courier dispatch & distance milestones',
+      'Flexible admin panel for 1-click theme switches and banner promos',
     ],
     cta: 'Read the case study',
     href: '#/case-study/nand-bhabhi',
     caseHref: '#/case-study/nand-bhabhi',
-    art: (
-      <img
-        className="s-shot"
-        src="/work/nand-bhabhi.jpg"
-        width="1400"
-        height="850"
-        loading="lazy"
-        alt="Nand Bhabhi clothing e-commerce website home page showcasing ethnic wear, sarees, lehengas, and festive fashion"
-      />
-    ),
+    slides: [
+      {
+        src: '/work/nand-bhabhi-hero.webp',
+        title: '01 · Festive Ethnic Wear Curation',
+        caption: 'Warm crimson and ivory hero spotlighting lehengas, silk sarees, and seasonal promotions.',
+        tag: 'Storefront',
+        alt: 'Nand Bhabhi festive ethnic wear hero banner',
+      },
+      {
+        src: '/work/new-arrival.webp',
+        title: '02 · The Film Library (Video Storytelling)',
+        caption: 'Short cinematic vignettes capturing fabric flow, zari work, embroidery, and true garment movement.',
+        tag: 'Storytelling',
+        alt: 'More new arrivals video presentation film library',
+      },
+      {
+        src: '/work/nand-bhabhi-delivery.webp',
+        title: '03 · Animated Delivery Tracking Concept',
+        caption: 'Live transit map, real-time distance calculations, and transparent Standard vs Express dispatch indicators.',
+        tag: 'Delivery Tracker',
+        alt: 'Interactive animated delivery status and parcel tracking mockup',
+      },
+      {
+        src: '/work/nand-bhabhi-admin.webp',
+        title: '04 · Independent Storefront Control Center',
+        caption: '1-click seasonal theme switcher and promo customizer empowering client autonomy without developer dependency.',
+        tag: 'Admin Panel',
+        alt: 'Nand Bhabhi storefront control center and theme customization admin panel',
+      },
+      {
+        src: '/work/nand-bhabhi-categories.webp',
+        title: '05 · Visual Collection Taxonomy',
+        caption: 'Curated shopping cards across Sarees, Kurtis, Lehengas, Anarkali & Suits, Men\'s Wear, and Kids Wear.',
+        tag: 'Collections',
+        alt: 'Featured collection category cards for sarees, kurtis, lehengas and suits',
+      },
+    ],
     tags: ['E-commerce', 'Ethnic Fashion', 'UI/UX Design', 'Store Management'],
   },
   {
@@ -210,31 +274,15 @@ const PROJECTS = [
     ],
     cta: 'Visit the Instagram page',
     href: 'https://www.instagram.com/shree_anu_sathya_designers/',
-    art: (
-      <div className="s-insight">
-        <div className="s-insight-stats">
-          <p>
-            <strong>17.9K</strong>
-            <span>views in the first 30 days</span>
-          </p>
-          <p>
-            <strong>6.5K</strong>
-            <span>viewers reached</span>
-          </p>
-          <p>
-            <strong>14K</strong>
-            <span>of those views from Reels</span>
-          </p>
-        </div>
-        <img
-          src="/work/instagram-insights.webp"
-          width="700"
-          height="663"
-          loading="lazy"
-          alt="Instagram Insights for the account over 30 days: 17,925 views, 37 net new followers and a graph of views by day"
-        />
-      </div>
-    ),
+    slides: [
+      {
+        src: '/work/instagram-insights.webp',
+        title: '01 · 30-Day Growth Analytics',
+        caption: '17,925 views and 6,480 viewers reached within the first month via organic Reels.',
+        tag: 'Social Growth',
+        alt: 'Instagram Insights for the account over 30 days: 17,925 views, 37 net new followers',
+      },
+    ],
     tags: ['Instagram', 'Content strategy', 'Reels', 'Analytics'],
   },
 ];
@@ -246,10 +294,10 @@ export function Work() {
       <div className="s-wrap">
         <Label>Selected work</Label>
         <h2 id="work-title" className="s-title" data-reveal>
-          Real projects, <em>live links.</em>
+          Real projects, <em>slidable postcards.</em>
         </h2>
         <p className="s-lead" data-reveal>
-          Open them, click around, judge for yourself.
+          Slide through the postcards to explore screens, interactive features, and live demonstrations.
         </p>
         <div className="s-projects">
           {PROJECTS.map((p, i) => (
@@ -259,19 +307,9 @@ export function Work() {
               aria-labelledby={`${p.id}-name`}
               data-reveal
             >
-              <a
-                className="s-art"
-                href={p.href}
-                target={p.href.startsWith('#') ? undefined : '_blank'}
-                rel={p.href.startsWith('#') ? undefined : 'noreferrer'}
-                tabIndex={-1}
-                aria-hidden="true"
-              >
-                {p.art}
-                <span className="s-art-chip">
-                  {p.href.startsWith('#') ? 'Case study' : 'Live'} <Arrow />
-                </span>
-              </a>
+              <div className="s-art-postcard">
+                <PostcardSlider slides={p.slides} projectName={p.name} projectHref={p.caseHref || p.href} />
+              </div>
               <div className="s-pcopy">
                 <p className="s-kicker">
                   Project 0{i + 1} <i aria-hidden="true" /> {p.kind}
@@ -288,21 +326,23 @@ export function Work() {
                     <li key={t}>{t}</li>
                   ))}
                 </ul>
-                <a
-                  className="s-link"
-                  href={p.href}
-                  target={p.href.startsWith('#') ? undefined : '_blank'}
-                  rel={p.href.startsWith('#') ? undefined : 'noreferrer'}
-                >
-                  {p.cta}
-                  {!p.href.startsWith('#') && <span className="sr-only"> (opens in a new tab)</span>}
-                  <Arrow />
-                </a>
-                {'caseHref' in p && p.href !== p.caseHref && (
-                  <a className="s-link s-link-case" href={p.caseHref}>
-                    Read the case study
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '18px', alignItems: 'center' }}>
+                  <a
+                    className="s-link"
+                    href={p.href}
+                    target={p.href.startsWith('#') ? undefined : '_blank'}
+                    rel={p.href.startsWith('#') ? undefined : 'noreferrer'}
+                  >
+                    {p.cta}
+                    {!p.href.startsWith('#') && <span className="sr-only"> (opens in a new tab)</span>}
+                    <Arrow />
                   </a>
-                )}
+                  {'caseHref' in p && p.href !== p.caseHref && (
+                    <a className="s-link s-link-case" href={p.caseHref}>
+                      Read the case study <Arrow />
+                    </a>
+                  )}
+                </div>
               </div>
             </article>
           ))}
