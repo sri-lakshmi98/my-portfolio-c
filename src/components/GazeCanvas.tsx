@@ -87,6 +87,10 @@ export function GazeCanvas() {
     const clipFrames = CLIPS.map((clip) =>
       loadFrames(clip.count, (index) => frameUrl(clip, index), markDirty),
     );
+    const tabletopImage = new Image();
+    tabletopImage.src = "/tabletop.png";
+    tabletopImage.onload = markDirty;
+
     const ringFrames = RINGS.map((ring) =>
       loadFrames(ring.clip.count, (index) => frameUrl(ring.clip, index), markDirty),
     );
@@ -298,6 +302,9 @@ export function GazeCanvas() {
               draw(ringFrames[r], ringShown[r], 1, placed);
             }
           });
+          if (ready(tabletopImage)) {
+            context.drawImage(tabletopImage, placed.offsetX, placed.offsetY, placed.width, placed.height);
+          }
           context.globalAlpha = 1;
         }
       }
