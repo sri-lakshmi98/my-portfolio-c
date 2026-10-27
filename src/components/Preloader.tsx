@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { preloadManager, type PreloadStats } from '../utils/preloadManager';
 
 const CORE_SHOWCASE_ASSETS = [
-  '/hero-mobile.jpg',
+  '/hero-chibi.png',
   '/work/nand-bhabhi-hero.webp',
   '/work/nand-bhabhi.jpg',
   '/work/aadithya.webp',
