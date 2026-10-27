@@ -24,7 +24,7 @@ export const frameUrl = (clip: Clip, index: number) =>
   `/frames/${clip.prefix}${String(index + 1).padStart(3, '0')}.webp`;
 
 // Solid colour of the clips' own backdrop, shown behind the canvas while frames load.
-export const BACKDROP = '#d83a56';
+export const BACKDROP = '#460607';
 
 // Where her head sits inside the frame (0..1).
 export const HEAD = { x: 0.5, y: 0.43 };

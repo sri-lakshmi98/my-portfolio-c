@@ -17,7 +17,7 @@ export function CaseStudyPage() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#d83a56] text-white">
+    <div className="relative min-h-screen bg-[#460607] text-white">
       <header className="cs-header">
         <a href="#work" className="cs-back">
           <span aria-hidden="true">&larr;</span> Back to my work

@@ -22,7 +22,7 @@
 }
 
 .s-dark {
-  background: #d83a56;
+  background: var(--ink);
   color: #fff;
 }
 
@@ -251,7 +251,7 @@
 .s-insight {
   display: grid;
   grid-template-columns: 1fr minmax(0, 1.05fr);
-  background: #d83a56;
+  background: #460607;
   color: #f5f1e4;
 }
 
@@ -641,7 +641,7 @@
   margin: 0 0 20px;
   padding: 5px 12px;
   border-radius: 999px;
-  background: #d83a56;
+  background: var(--ink);
   color: #fff;
   font-size: 12px;
   letter-spacing: 0.14em;
@@ -763,7 +763,7 @@
 }
 
 .s-group li:hover {
-  background: #d83a56;
+  background: var(--ink);
   color: #fff;
   transform: translateY(-2px);
 }
@@ -799,7 +799,7 @@
   padding: clamp(32px, 6vw, 72px);
   border: 2.5px solid var(--ink);
   border-radius: 32px;
-  background: #d83a56;
+  background: var(--ink);
   color: #fff;
   box-shadow: 10px 10px 0 var(--red);
 }
@@ -836,7 +836,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #d83a56;
+  background: var(--ink);
 }
 
 .s-pulse::after {
@@ -844,7 +844,7 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: #d83a56;
+  background: var(--ink);
   animation: s-ping 1.8s ease-out infinite;
 }
 

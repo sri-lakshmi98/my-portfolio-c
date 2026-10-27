@@ -6,7 +6,7 @@
   --red-text: #a31f18;
   position: relative;
   z-index: 1;
-  background: #d83a56;
+  background: #460607;
   color: #fff;
   font-family: var(--font-body);
 }
@@ -826,7 +826,7 @@
   inset: 0 0 auto;
   z-index: 9;
   height: 96px;
-  background: linear-gradient(#d83a56 35%, rgba(216, 58, 86, 0));
+  background: linear-gradient(#460607 35%, rgba(70, 6, 7, 0));
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
