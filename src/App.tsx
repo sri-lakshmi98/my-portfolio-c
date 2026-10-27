@@ -86,12 +86,18 @@ function Home() {
       />
 
       <nav
-        className={`fixed inset-x-0 top-0 z-10 flex items-center justify-between px-6 py-4 transition-[background-color,box-shadow] duration-300 sm:px-10 md:px-14 lg:px-16 ${
-          scrolled || isMenuOpen ? 'bg-[#460607]/92 shadow-[0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-md' : ''
+        className={`fixed inset-x-0 top-0 z-20 flex items-center justify-between px-6 py-4 transition-[background-color,box-shadow,opacity] duration-300 sm:px-10 md:px-14 lg:px-16 ${
+          scrolled || isMenuOpen ? 'bg-[#460607]/92 shadow-[0_1px_0_rgba(255,255,255,0.14)] backdrop-blur-md' : 'bg-transparent'
         }`}
         aria-label="Main navigation"
       >
-        <a href="#top" className="flex items-center" aria-label="M. Shri Lakshmi, back to top">
+        <a
+          href="#top"
+          className={`flex items-center transition-opacity duration-300 ${
+            !scrolled && !isMenuOpen ? 'opacity-0 md:opacity-100 pointer-events-none md:pointer-events-auto' : 'opacity-100'
+          }`}
+          aria-label="M. Shri Lakshmi, back to top"
+        >
           <span
             className="text-[21px] tracking-tight text-white sm:text-[26px]"
             style={{ fontFamily: 'var(--font-heading)' }}
@@ -183,105 +189,173 @@ function Home() {
       <main
         id="top"
         ref={heroRef}
-        className="relative z-[1] flex h-screen min-h-[600px] flex-col justify-start px-6 pt-20 sm:px-10 sm:pt-24 md:px-14 md:pt-26 lg:px-16 lg:pt-28"
+        className="relative z-[1] w-full"
       >
-        {/* Floating handwritten doodle shifted more right to clear the chibi */}
-        <div
-          className="pointer-events-none absolute right-2 top-[22%] z-10 hidden rotate-[-6deg] select-none text-[#e8453c] sm:right-3 sm:top-[23%] sm:block md:right-4 md:top-[24%] lg:right-6"
-          style={{ fontFamily: "'Caveat', cursive, sans-serif" }}
-          aria-hidden="true"
-        >
-          <div className="flex flex-col text-[18px] font-semibold leading-[1.2] sm:text-[20px] md:text-[23px]">
-            <span className="pl-0">Design</span>
-            <span className="pl-2.5">Create</span>
-            <span className="pl-5">Build</span>
-            <span className="flex items-center pl-7">
-              Grow&nbsp;<span className="text-[0.75em]">♡</span>
-            </span>
-            <svg
-              className="ml-6 mt-1 h-2.5 w-11 text-[#e8453c]"
-              viewBox="0 0 54 14"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-            >
-              <path d="M4 5C18 12 38 12 50 5" />
-            </svg>
+        {/* ========================================================
+            MOBILE VIEW (Exact Reference Card Mockup with Interactive Links)
+            ======================================================== */}
+        <div className="flex md:hidden min-h-[100dvh] w-full flex-col items-center justify-center px-4 pt-10 pb-8 bg-gradient-to-b from-[#2f0506] via-[#2f0506] to-[#460607]">
+          <div className="relative mx-auto w-full max-w-[min(410px,calc((100dvh-4.5rem)*0.666))] aspect-[682/1024]">
+            <img
+              src="/hero-mobile.jpg"
+              alt="Shri Lakshmi — I make ideas work from pixels to people"
+              className="h-full w-full object-contain pointer-events-none select-none drop-shadow-2xl"
+              loading="eager"
+            />
+
+            {/* Clickable Hotspots matching reference mockup card */}
+            {/* Logo / Back to top */}
+            <a
+              href="#top"
+              className="absolute rounded-md transition-colors duration-150 active:bg-black/15 focus-visible:outline-2 focus-visible:outline-[#e8453c]"
+              style={{ top: '22.8%', left: '17.2%', width: '26.0%', height: '5.2%' }}
+              aria-label="Shri Lakshmi — Back to top"
+            />
+
+            {/* Get in touch */}
+            <a
+              href={MAILTO}
+              className="absolute rounded-md transition-colors duration-150 active:bg-black/15 focus-visible:outline-2 focus-visible:outline-[#e8453c]"
+              style={{ top: '22.8%', left: '63.8%', width: '19.4%', height: '5.2%' }}
+              aria-label="Get in touch via email"
+            />
+
+            {/* My journey */}
+            <a
+              href="#journey"
+              className="absolute rounded-md transition-colors duration-150 active:bg-black/15 focus-visible:outline-2 focus-visible:outline-[#e8453c]"
+              style={{ top: '51.8%', left: '20.2%', width: '59.6%', height: '5.4%' }}
+              aria-label="Navigate to My Journey"
+            />
+
+            {/* What I am capable of */}
+            <a
+              href="#services"
+              className="absolute rounded-md transition-colors duration-150 active:bg-black/15 focus-visible:outline-2 focus-visible:outline-[#e8453c]"
+              style={{ top: '57.2%', left: '20.2%', width: '59.6%', height: '5.4%' }}
+              aria-label="Navigate to What I am capable of"
+            />
+
+            {/* Tools & skills I have a strong command of */}
+            <a
+              href="#skills"
+              className="absolute rounded-md transition-colors duration-150 active:bg-black/15 focus-visible:outline-2 focus-visible:outline-[#e8453c]"
+              style={{ top: '62.7%', left: '20.2%', width: '59.6%', height: '5.5%' }}
+              aria-label="Navigate to Tools and skills"
+            />
+
+            {/* Hire me or reach out */}
+            <a
+              href="#contact"
+              className="absolute rounded-md transition-colors duration-150 active:bg-black/15 focus-visible:outline-2 focus-visible:outline-[#e8453c]"
+              style={{ top: '68.3%', left: '20.2%', width: '59.6%', height: '5.5%' }}
+              aria-label="Navigate to Hire me or reach out"
+            />
           </div>
         </div>
 
-        <div className="relative z-10 w-full max-w-[640px]">
-          <h1
-            className="text-[clamp(28px,3.6vw,54px)] font-normal leading-[1.14] tracking-[-0.015em] text-white"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+        {/* ========================================================
+            DESKTOP VIEW (Interactive GazeCanvas Hero)
+            ======================================================== */}
+        <div className="hidden md:flex relative h-screen min-h-[600px] flex-col justify-start px-6 pt-20 sm:px-10 sm:pt-24 md:px-14 md:pt-26 lg:px-16 lg:pt-28">
+          {/* Floating handwritten doodle shifted more right to clear the chibi */}
+          <div
+            className="pointer-events-none absolute right-2 top-[22%] z-10 hidden rotate-[-6deg] select-none text-[#e8453c] sm:right-3 sm:top-[23%] sm:block md:right-4 md:top-[24%] lg:right-6"
+            style={{ fontFamily: "'Caveat', cursive, sans-serif" }}
+            aria-hidden="true"
           >
-            I make{' '}
-            <span className="relative inline-block italic font-normal">
-              ideas
+            <div className="flex flex-col text-[18px] font-semibold leading-[1.2] sm:text-[20px] md:text-[23px]">
+              <span className="pl-0">Design</span>
+              <span className="pl-2.5">Create</span>
+              <span className="pl-5">Build</span>
+              <span className="flex items-center pl-7">
+                Grow&nbsp;<span className="text-[0.75em]">?</span>
+              </span>
               <svg
-                className="pointer-events-none absolute -top-4 left-1/2 h-4 w-7 -translate-x-1/2 overflow-visible text-[#e8453c] sm:-top-5 sm:h-5 sm:w-8"
-                viewBox="0 0 32 18"
+                className="ml-6 mt-1 h-2.5 w-11 text-[#e8453c]"
+                viewBox="0 0 54 14"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2.2"
                 strokeLinecap="round"
-                aria-hidden="true"
               >
-                <path d="M8 14L4 4" />
-                <path d="M16 13L16 2" />
-                <path d="M24 14L28 4" />
+                <path d="M4 5C18 12 38 12 50 5" />
               </svg>
-            </span>{' '}
-            work —<br />
-            from pixels to{' '}
-            <span className="relative inline-block pb-1">
-              people.
-              <svg
-                className="pointer-events-none absolute -bottom-2 left-0 h-3.5 w-full overflow-visible text-[#e8453c] sm:-bottom-2.5 sm:h-4"
-                viewBox="0 0 140 16"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-              >
-                <path d="M3 6C36 3 92 2 136 6C108 9 68 11 38 12C62 13 104 12 132 10" />
-              </svg>
-            </span>
-          </h1>
+            </div>
+          </div>
 
-          <nav
-            className="mt-5 flex w-full max-w-[430px] flex-col border-t border-white/20 sm:mt-7 sm:max-w-[460px]"
-            aria-label="Hero shortcuts"
-          >
-            {HERO_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="group flex items-center justify-between border-b border-white/20 py-2 sm:py-2.5 text-[13.5px] sm:text-[14.5px] md:text-[15.5px] text-white/90 transition-colors duration-200 hover:text-white"
-              >
-                <span className="font-normal tracking-wide transition-transform duration-200 group-hover:translate-x-1">
-                  {link.label}
-                </span>
+          <div className="relative z-10 w-full max-w-[640px]">
+            <h1
+              className="text-[clamp(28px,3.6vw,54px)] font-normal leading-[1.14] tracking-[-0.015em] text-white"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            >
+              I make{' '}
+              <span className="relative inline-block italic font-normal">
+                ideas
                 <svg
-                  className="h-4 w-4 text-[#e8453c] transition-transform duration-200 group-hover:translate-x-1"
-                  viewBox="0 0 24 24"
+                  className="pointer-events-none absolute -top-4 left-1/2 h-4 w-7 -translate-x-1/2 overflow-visible text-[#e8453c] sm:-top-5 sm:h-5 sm:w-8"
+                  viewBox="0 0 32 18"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2"
+                  strokeWidth="2.2"
                   strokeLinecap="round"
-                  strokeLinejoin="round"
                   aria-hidden="true"
                 >
-                  <line x1="4" y1="12" x2="20" y2="12" />
-                  <polyline points="14 6 20 12 14 18" />
+                  <path d="M8 14L4 4" />
+                  <path d="M16 13L16 2" />
+                  <path d="M24 14L28 4" />
                 </svg>
-              </a>
-            ))}
-          </nav>
+              </span>{' '}
+              work —<br />
+              from pixels to{' '}
+              <span className="relative inline-block pb-1">
+                people.
+                <svg
+                  className="pointer-events-none absolute -bottom-2 left-0 h-3.5 w-full overflow-visible text-[#e8453c] sm:-bottom-2.5 sm:h-4"
+                  viewBox="0 0 140 16"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path d="M3 6C36 3 92 2 136 6C108 9 68 11 38 12C62 13 104 12 132 10" />
+                </svg>
+              </span>
+            </h1>
+
+            <nav
+              className="mt-5 flex w-full max-w-[430px] flex-col border-t border-white/20 sm:mt-7 sm:max-w-[460px]"
+              aria-label="Hero shortcuts"
+            >
+              {HERO_LINKS.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="group flex items-center justify-between border-b border-white/20 py-2 sm:py-2.5 text-[13.5px] sm:text-[14.5px] md:text-[15.5px] text-white/90 transition-colors duration-200 hover:text-white"
+                >
+                  <span className="font-normal tracking-wide transition-transform duration-200 group-hover:translate-x-1">
+                    {link.label}
+                  </span>
+                  <svg
+                    className="h-4 w-4 text-[#e8453c] transition-transform duration-200 group-hover:translate-x-1"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="4" y1="12" x2="20" y2="12" />
+                    <polyline points="14 6 20 12 14 18" />
+                  </svg>
+                </a>
+              ))}
+            </nav>
+          </div>
         </div>
       </main>
 

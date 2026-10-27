@@ -318,7 +318,7 @@ export function GazeCanvas() {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-0" style={{ backgroundColor: BACKDROP }} aria-hidden="true">
+    <div className="fixed inset-0 z-0 hidden md:block" style={{ backgroundColor: BACKDROP }} aria-hidden="true">
       <canvas ref={canvasRef} className="h-screen w-screen" />
     </div>
   );
