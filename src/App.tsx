@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { GazeCanvas } from './components/GazeCanvas';
+import { HeroDeskOverlay } from './components/HeroDeskOverlay';
 import { CaseStudyPage } from './components/sections/CaseStudyPage';
 import { NandBhabhiCaseStudyPage } from './components/sections/NandBhabhiCaseStudyPage';
 import { JourneySection } from './components/JourneySection';
@@ -80,6 +81,7 @@ function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#460607] text-white">
       <GazeCanvas />
+      <HeroDeskOverlay />
       <div
         className="pointer-events-none fixed inset-0 z-0 bg-gradient-to-r from-black/20 via-black/5 to-transparent"
         aria-hidden="true"
