@@ -1,3 +1,4 @@
+import { preloadManager } from '../utils/preloadManager';
 import { useEffect, useRef } from 'react';
 import {
   BACKDROP,
@@ -84,11 +85,23 @@ export function GazeCanvas() {
     const markDirty = () => {
       dirty = true;
     };
+
+    const totalGazeFrames =
+      CLIPS.reduce((sum, c) => sum + c.count, 0) +
+      RINGS.reduce((sum, r) => sum + r.clip.count, 0);
+
+    preloadManager.register(totalGazeFrames, 'Streaming character frames...');
+
+    const onFrameLoad = () => {
+      markDirty();
+      preloadManager.onAssetLoaded(1, 'Streaming character frames...');
+    };
+
     const clipFrames = CLIPS.map((clip) =>
-      loadFrames(clip.count, (index) => frameUrl(clip, index), markDirty),
+      loadFrames(clip.count, (index) => frameUrl(clip, index), onFrameLoad),
     );
     const ringFrames = RINGS.map((ring) =>
-      loadFrames(ring.clip.count, (index) => frameUrl(ring.clip, index), markDirty),
+      loadFrames(ring.clip.count, (index) => frameUrl(ring.clip, index), onFrameLoad),
     );
     const ready = (image: HTMLImageElement | undefined) =>
       !!image && image.complete && image.naturalWidth > 0;
