@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { preloadManager, type PreloadStats } from '../utils/preloadManager';
+import { CoffeeChibi } from './CoffeeChibi';
 
 const CORE_SHOWCASE_ASSETS = [
   '/hero-chibi.png',
@@ -140,17 +141,19 @@ export function Preloader() {
         </div>
       </div>
 
-      {/* Center Stage: Huge Percentage Counter & Glowing Progress Bar */}
+      {/* Center Stage: Coffee Chibi, Percentage Counter & Glowing Progress Bar */}
       <div className="my-auto flex flex-col items-center justify-center text-center">
+        <CoffeeChibi />
+
         {/* Phase subtitle */}
-        <p className="mb-3 text-[13px] sm:text-[14px] uppercase tracking-[0.2em] text-[#e8453c] font-mono">
-          {stats.isComplete ? 'WORKSPACE READY' : 'PRELOADING ASSETS'}
+        <p className="mt-5 mb-2 text-[13px] sm:text-[14px] uppercase tracking-[0.2em] text-[#e8453c] font-mono">
+          {stats.isComplete ? 'FRESHLY BREWED' : 'BREWING THE PORTFOLIO'}
         </p>
 
         {/* Big Counter */}
         <div className="flex items-baseline justify-center select-none">
           <span
-            className="text-[72px] sm:text-[108px] md:text-[124px] font-light leading-none tracking-tighter text-white"
+            className="text-[60px] sm:text-[88px] md:text-[100px] font-light leading-none tracking-tighter text-white"
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           >
             {displayedPercent}

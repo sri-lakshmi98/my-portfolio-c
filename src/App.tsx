@@ -206,19 +206,26 @@ function Home() {
               loading="eager"
               aria-hidden="true"
             />
+            {/* Big name in the open space left of the chibi, above the tablet */}
+            {/* Sized on the wrapper: the base `a { font: inherit }` rule overrides text utilities on links */}
+            <div
+              className="absolute top-[9cqw] left-[1cqw] z-10 text-[clamp(38px,12.5cqw,56px)] leading-[0.95] tracking-[-0.03em] text-white"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              <a href="#top" aria-label="Shri Lakshmi, back to top">
+                Shri
+                <br />
+                Lakshmi<span className="align-super text-[0.4em] text-[#e8453c]">®</span>
+              </a>
+            </div>
             <div className="h-[42cqw]" />
 
             <div className="rounded-[7.23cqw] bg-[#53382f] p-[1.45cqw] shadow-[0_0_0_1px_rgba(150,120,110,0.55)_inset,0_28px_60px_rgba(0,0,0,0.55)]">
               <div className="rounded-[5.8cqw] bg-[#160c05] p-[1.45cqw]">
                 <div className="relative rounded-[4.34cqw] bg-[#f5e1c8] px-[7cqw] pt-[9cqw] pb-[6cqw] text-[#3a1a12]">
-                  <a
-                    href="#top"
-                    className="text-[19px] tracking-tight"
-                    style={{ fontFamily: 'var(--font-heading)' }}
-                    aria-label="Shri Lakshmi, back to top"
-                  >
-                    Shri Lakshmi®
-                  </a>
+                  <p className="max-w-[48cqw] text-[14px] leading-snug text-[#7a2a1e]">
+                    Web &amp; UI/UX Designer
+                  </p>
 
                   {/* Clear the chibi's legs, which hang over the screen */}
                   <h1
@@ -387,31 +394,31 @@ function Home() {
             </h1>
 
             <nav
-              className="mt-5 flex w-full max-w-[430px] flex-col border-t border-white/20 sm:mt-7 sm:max-w-[460px]"
+              className="mt-6 flex w-full max-w-[430px] flex-col gap-2.5 sm:mt-8 sm:max-w-[460px]"
               aria-label="Hero shortcuts"
             >
               {HERO_LINKS.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="group flex items-center justify-between border-b border-white/20 py-2 sm:py-2.5 text-[13.5px] sm:text-[14.5px] md:text-[15.5px] text-white/90 transition-colors duration-200 hover:text-white"
+                  className="group flex items-center justify-between gap-4 rounded-2xl border border-white/20 bg-white/[0.06] py-2.5 pr-2.5 pl-5 text-[14.5px] md:text-[15.5px] text-white/90 backdrop-blur-sm transition duration-200 hover:border-white hover:bg-white hover:text-[#3a1a12] active:translate-y-[1px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e8453c]"
                 >
-                  <span className="font-normal tracking-wide transition-transform duration-200 group-hover:translate-x-1">
-                    {link.label}
+                  <span className="font-normal tracking-wide">{link.label}</span>
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#e8453c] text-white transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg
+                      className="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <line x1="4" y1="12" x2="20" y2="12" />
+                      <polyline points="14 6 20 12 14 18" />
+                    </svg>
                   </span>
-                  <svg
-                    className="h-4 w-4 text-[#e8453c] transition-transform duration-200 group-hover:translate-x-1"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <line x1="4" y1="12" x2="20" y2="12" />
-                    <polyline points="14 6 20 12 14 18" />
-                  </svg>
                 </a>
               ))}
             </nav>
