@@ -1,6 +1,5 @@
 import { preloadManager } from '../utils/preloadManager';
-import { useEffect, useRef, useState } from 'react';
-import { DeskProps } from './DeskProps';
+import { useEffect, useRef } from 'react';
 import {
   BACKDROP,
   CLIPS,
@@ -45,34 +44,6 @@ const ANGLE_TIME_S = 0.12;
 const MIN_SWITCH_GAP_MS = 350;
 
 type Layout = { offsetX: number; offsetY: number; width: number; height: number };
-
-// Every frame is this size; the desk props are drawn in these pixels.
-const FRAME_WIDTH = 1024;
-const FRAME_HEIGHT = 576;
-
-/** Where a frame lands on screen: cover the viewport, with her head at HEAD_SCREEN_X on wide screens. */
-function frameLayout(width: number, height: number, naturalWidth = FRAME_WIDTH, naturalHeight = FRAME_HEIGHT): Layout {
-  const scale = Math.max(width / naturalWidth, height / naturalHeight);
-  const drawWidth = naturalWidth * scale;
-  const drawHeight = naturalHeight * scale;
-  return {
-    offsetX: width * (width >= 768 ? HEAD_SCREEN_X : 0.5) - HEAD.x * drawWidth,
-    offsetY: (height - drawHeight) / 2,
-    width: drawWidth,
-    height: drawHeight,
-  };
-}
-
-/** The frame's placement, kept in step with the window size. */
-function useFrameLayout() {
-  const [placed, setPlaced] = useState(() => frameLayout(window.innerWidth, window.innerHeight));
-  useEffect(() => {
-    const onResize = () => setPlaced(frameLayout(window.innerWidth, window.innerHeight));
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
-  return placed;
-}
 type Spring = { value: number; velocity: number };
 
 function loadFrames(count: number, url: (index: number) => string, onLoad: () => void) {
@@ -102,7 +73,6 @@ function smoothDamp(spring: Spring, target: number, smoothTime: number, dt: numb
  */
 export function GazeCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const placed = useFrameLayout();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -182,13 +152,21 @@ export function GazeCanvas() {
       if (!ready(sample)) {
         return null;
       }
+      const scale = Math.max(width / sample.naturalWidth, height / sample.naturalHeight);
+      const drawWidth = sample.naturalWidth * scale;
+      const drawHeight = sample.naturalHeight * scale;
       // She sits towards the right, leaving the left for the page content. The left edge of her frame is
       // feathered into the backdrop colour behind the canvas.
-      layout = frameLayout(width, height, sample.naturalWidth, sample.naturalHeight);
-      const { offsetX } = layout;
+      const offsetX = width * (width >= 768 ? HEAD_SCREEN_X : 0.5) - HEAD.x * drawWidth;
       const feather = `linear-gradient(to right, transparent ${offsetX}px, #000 ${offsetX + FEATHER_PX}px)`;
       canvas.style.maskImage = offsetX > 0 ? feather : '';
       canvas.style.webkitMaskImage = offsetX > 0 ? feather : '';
+      layout = {
+        offsetX,
+        offsetY: (height - drawHeight) / 2,
+        width: drawWidth,
+        height: drawHeight,
+      };
       return layout;
     };
 
@@ -355,12 +333,6 @@ export function GazeCanvas() {
   return (
     <div className="fixed inset-0 z-0 hidden md:block" style={{ backgroundColor: BACKDROP }} aria-hidden="true">
       <canvas ref={canvasRef} className="h-screen w-screen" />
-      <div
-        className="pointer-events-none absolute"
-        style={{ left: placed.offsetX, top: placed.offsetY, width: placed.width, height: placed.height }}
-      >
-        <DeskProps />
-      </div>
     </div>
   );
 }
