@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { GazeCanvas } from './components/GazeCanvas';
 import { CaseStudyPage } from './components/sections/CaseStudyPage';
 import { NandBhabhiCaseStudyPage } from './components/sections/NandBhabhiCaseStudyPage';
+import { AnusathyaCaseStudyPage } from './components/sections/AnusathyaCaseStudyPage';
 import { JourneySection } from './components/JourneySection';
 import {
   Contact,
@@ -451,6 +452,9 @@ function App() {
   const route = useHashRoute();
   if (route.startsWith('#/case-study/nand-bhabhi')) {
     return <NandBhabhiCaseStudyPage />;
+  }
+  if (route.startsWith('#/case-study/anusathya')) {
+    return <AnusathyaCaseStudyPage />;
   }
   return route.startsWith('#/case-study/aadithya') ? <CaseStudyPage /> : <Home />;
 }

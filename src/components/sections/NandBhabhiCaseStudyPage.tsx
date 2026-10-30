@@ -3,13 +3,13 @@ import { useReveal } from '../../hooks/useReveal';
 import { NandBhabhiCaseStudy } from './NandBhabhiCaseStudy';
 import { EMAIL, Footer } from './Sections';
 
-/** The Nand Bhabhi clothing e-commerce case study page. */
+/** The NANADHBABBHI e-commerce and admin dashboard case study page. */
 export function NandBhabhiCaseStudyPage() {
   useReveal();
 
   useEffect(() => {
     const previous = document.title;
-    document.title = 'Nand Bhabhi Case Study | M. Shri Lakshmi';
+    document.title = 'NANADHBABBHI Case Study | M. Shri Lakshmi';
     window.scrollTo(0, 0);
     return () => {
       document.title = previous;

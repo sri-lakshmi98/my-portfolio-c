@@ -4,16 +4,15 @@ import { preloadManager, type PreloadStats } from '../utils/preloadManager';
 const CORE_SHOWCASE_ASSETS = [
   '/hero-chibi.png',
   '/work/nand-bhabhi-hero.webp',
-  '/work/nand-bhabhi.jpg',
-  '/work/aadithya.webp',
-  '/work/aadithya-3d.webp',
-  '/work/aadithya-quote.webp',
+  '/work/nand-bhabhi-product.webp',
+  '/work/nand-bhabhi-dashboard.webp',
+  '/work/aadithya-hero.webp',
+  '/work/aadithya-catalogue.webp',
+  '/work/aadithya-product.webp',
   '/work/nest.webp',
   '/work/nest-audit.webp',
-  '/work/nand-bhabhi-delivery.webp',
-  '/work/nand-bhabhi-categories.webp',
-  '/work/nand-bhabhi-admin.webp',
-  '/work/new-arrival.webp',
+  '/work/anusathya-dash-ig-overview.webp',
+  '/work/anusathya-dash-ig-interactions.webp',
 ];
 
 export function Preloader() {

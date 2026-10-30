@@ -18,6 +18,7 @@ export function PostcardSlider({ slides, projectName, projectHref }: PostcardSli
   const [current, setCurrent] = useState(0);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
+  const lightbox = useRef<HTMLDialogElement>(null);
 
   const prev = useCallback(() => {
     setCurrent((c) => (c === 0 ? slides.length - 1 : c - 1));
@@ -82,12 +83,21 @@ export function PostcardSlider({ slides, projectName, projectHref }: PostcardSli
                 className="postcard-slide"
                 aria-hidden={idx !== current}
               >
-                <img
-                  src={s.src}
-                  alt={s.alt}
-                  loading={idx === 0 ? 'eager' : 'lazy'}
-                  className="postcard-img"
-                />
+                <button
+                  type="button"
+                  className="postcard-zoom"
+                  tabIndex={idx === current ? 0 : -1}
+                  aria-label={`View full size: ${s.title}`}
+                  onClick={() => lightbox.current?.showModal()}
+                >
+                  <img
+                    src={s.src}
+                    alt={s.alt}
+                    loading={idx === 0 ? 'eager' : 'lazy'}
+                    className="postcard-img"
+                  />
+                </button>
+                <span className="postcard-zoom-hint" aria-hidden="true">Click to enlarge</span>
                 {s.tag && (
                   <span className="postcard-badge">{s.tag}</span>
                 )}
@@ -147,6 +157,30 @@ export function PostcardSlider({ slides, projectName, projectHref }: PostcardSli
           )}
         </div>
       </div>
+
+      {/* Full-size view of the current slide, so screen text stays readable */}
+      <dialog
+        ref={lightbox}
+        className="postcard-lightbox"
+        aria-label={`${projectName}: ${activeSlide.title}`}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) lightbox.current?.close();
+        }}
+      >
+        <img src={activeSlide.src} alt={activeSlide.alt} />
+        <div className="postcard-lightbox-bar">
+          <p className="postcard-lightbox-title">{activeSlide.title}</p>
+          <div className="postcard-lightbox-actions">
+            {slides.length > 1 && (
+              <>
+                <button type="button" onClick={prev}>Previous</button>
+                <button type="button" onClick={next}>Next</button>
+              </>
+            )}
+            <button type="button" onClick={() => lightbox.current?.close()}>Close</button>
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 }

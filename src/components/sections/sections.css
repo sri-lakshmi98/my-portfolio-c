@@ -231,9 +231,16 @@
   gap: 90px;
 }
 
+/* Wider than the page column on big screens, so screenshots in the postcards stay readable. */
+@media (min-width: 1300px) {
+  .s-projects {
+    margin-inline: calc((100% - min(100vw - 96px, 1480px)) / 2);
+  }
+}
+
 .s-project {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1.6fr 1fr;
   gap: clamp(28px, 5vw, 72px);
   align-items: center;
 }
@@ -1190,7 +1197,7 @@
 }
 
 .postcard-container:hover .postcard-card {
-  transform: translate(-3px, -3px) rotate(-0.5deg);
+  transform: translate(-3px, -3px);
   box-shadow: 14px 14px 0 var(--red);
 }
 
@@ -1248,7 +1255,6 @@
 .postcard-track {
   display: flex;
   transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform;
 }
 
 .postcard-slide {
@@ -1270,6 +1276,95 @@
   display: block;
   user-select: none;
   -webkit-user-drag: none;
+}
+
+.postcard-zoom {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.postcard-zoom-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 5;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(18, 12, 14, 0.82);
+  color: #fffdf8;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+
+.postcard-lightbox {
+  width: fit-content;
+  max-width: 96vw;
+  max-height: 96vh;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 14px;
+  background: #181617;
+  color: #fffdf8;
+}
+
+.postcard-lightbox::backdrop {
+  background: rgba(10, 6, 6, 0.9);
+}
+
+.postcard-lightbox img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 96vw;
+  max-height: calc(96vh - 58px);
+  margin: 0 auto;
+}
+
+.postcard-lightbox-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 58px;
+  padding: 8px 14px;
+}
+
+.postcard-lightbox-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.postcard-lightbox-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.postcard-lightbox-actions button {
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.postcard-lightbox-actions button:hover,
+.postcard-lightbox-actions button:focus-visible {
+  background: #fffdf8;
+  color: #181617;
 }
 
 .postcard-badge {
