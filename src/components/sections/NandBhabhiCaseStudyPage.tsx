@@ -10,7 +10,7 @@ export function NandBhabhiCaseStudyPage() {
   useEffect(() => {
     const previous = document.title;
     document.title = 'NANADHBABBHI Case Study | M. Shri Lakshmi';
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'instant' });
     return () => {
       document.title = previous;
     };

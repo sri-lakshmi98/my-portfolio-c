@@ -15,15 +15,19 @@ const CORE_SHOWCASE_ASSETS = [
   '/work/anusathya-dash-ig-interactions.webp',
 ];
 
+// The loader belongs to the first arrival, not to every return to the home page.
+let hasPlayed = false;
+
 export function Preloader() {
   const [stats, setStats] = useState<PreloadStats>(() => preloadManager.getStats());
   const [displayedPercent, setDisplayedPercent] = useState(0);
-  const [isDismissed, setIsDismissed] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(hasPlayed);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const animRef = useRef<number | null>(null);
 
   // 1. Kick off preloading of core visual showcase assets and typography
   useEffect(() => {
+    if (hasPlayed) return undefined;
     preloadManager.register(CORE_SHOWCASE_ASSETS.length, 'Caching project case studies...');
     CORE_SHOWCASE_ASSETS.forEach((src) => {
       const img = new Image();
@@ -84,6 +88,7 @@ export function Preloader() {
       const timer = setTimeout(() => {
         setIsFadingOut(true);
         const cleanup = setTimeout(() => {
+          hasPlayed = true;
           setIsDismissed(true);
         }, 800);
         return () => clearTimeout(cleanup);

@@ -145,3 +145,121 @@ html {
   }
 
 }
+
+/* Page change: a cream curtain with a red leading edge names the destination. */
+.page-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  overflow: hidden;
+}
+
+.page-curtain__edge,
+.page-curtain__panel {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.page-curtain__edge {
+  background: #e8453c;
+}
+
+.page-curtain__panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #f5e1c8;
+  color: #3a1a12;
+  text-align: center;
+}
+
+.page-curtain__eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7a2a1e;
+}
+
+.page-curtain__title {
+  margin-top: 10px;
+  font-size: clamp(36px, 7vw, 84px);
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.page-curtain__scribble {
+  width: min(320px, 60vw);
+  height: 18px;
+  margin-top: 14px;
+  overflow: visible;
+  color: #e8453c;
+}
+
+.page-curtain__scribble path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: curtain-draw 0.5s ease-out 0.28s forwards;
+}
+
+.page-curtain__eyebrow,
+.page-curtain__title {
+  animation: curtain-text 0.4s ease-out 0.16s both;
+}
+
+.page-curtain.is-cover .page-curtain__edge {
+  animation: curtain-in 0.5s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+.page-curtain.is-cover .page-curtain__panel {
+  animation: curtain-in 0.5s cubic-bezier(0.76, 0, 0.24, 1) 0.06s both;
+}
+
+.page-curtain.is-reveal .page-curtain__panel {
+  animation: curtain-out 0.56s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+.page-curtain.is-reveal .page-curtain__edge {
+  animation: curtain-out 0.56s cubic-bezier(0.76, 0, 0.24, 1) 0.06s both;
+}
+
+@keyframes curtain-in {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes curtain-out {
+  from {
+    transform: none;
+  }
+
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes curtain-text {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes curtain-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

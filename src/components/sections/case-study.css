@@ -599,6 +599,53 @@
   color: #fffdf6;
 }
 
+.cs-palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+  margin: 8px 0 1.6em;
+  padding: 0;
+  list-style: none;
+  font-size: 15px;
+  color: #fffdf6;
+}
+
+.cs-palette li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cs-palette span {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(245, 241, 228, 0.35);
+  border-radius: 50%;
+}
+
+.cs-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 0;
+  margin: 8px 0 1.6em;
+  padding: 0;
+  list-style: none;
+}
+
+.cs-flow li {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #fffdf6;
+}
+
+.cs-flow li:not(:last-child)::after {
+  content: '\2192';
+  margin: 0 10px;
+  color: #f5e211;
+}
+
 .cs-table-wrap {
   margin: 20px 0 1.6em;
   overflow-x: auto;

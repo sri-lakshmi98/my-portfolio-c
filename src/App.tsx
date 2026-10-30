@@ -1,6 +1,7 @@
 import { Preloader } from './components/Preloader';
 import { useEffect, useRef, useState } from 'react';
 import { GazeCanvas } from './components/GazeCanvas';
+import { usePageTransition, type PageKey } from './components/PageTransition';
 import { CaseStudyPage } from './components/sections/CaseStudyPage';
 import { NandBhabhiCaseStudyPage } from './components/sections/NandBhabhiCaseStudyPage';
 import { AnusathyaCaseStudyPage } from './components/sections/AnusathyaCaseStudyPage';
@@ -50,7 +51,8 @@ function Home() {
 
   useEffect(() => {
     const target = window.location.hash.length > 1 ? document.getElementById(window.location.hash.slice(1)) : null;
-    target?.scrollIntoView();
+    // Instant: a smooth scroll here would pass through sections that have not revealed yet.
+    target?.scrollIntoView({ behavior: 'instant' });
   }, []);
 
   useEffect(() => {
@@ -448,15 +450,21 @@ function Home() {
   );
 }
 
+function renderPage(page: PageKey) {
+  if (page === 'nand-bhabhi') return <NandBhabhiCaseStudyPage />;
+  if (page === 'anusathya') return <AnusathyaCaseStudyPage />;
+  return page === 'aadithya' ? <CaseStudyPage /> : <Home />;
+}
+
 function App() {
   const route = useHashRoute();
-  if (route.startsWith('#/case-study/nand-bhabhi')) {
-    return <NandBhabhiCaseStudyPage />;
-  }
-  if (route.startsWith('#/case-study/anusathya')) {
-    return <AnusathyaCaseStudyPage />;
-  }
-  return route.startsWith('#/case-study/aadithya') ? <CaseStudyPage /> : <Home />;
+  const { page, curtain } = usePageTransition(route);
+  return (
+    <>
+      {curtain}
+      {renderPage(page)}
+    </>
+  );
 }
 
 export default App;

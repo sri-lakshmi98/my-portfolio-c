@@ -10,7 +10,7 @@ export function AnusathyaCaseStudyPage() {
   useEffect(() => {
     const previous = document.title;
     document.title = 'Shree Anusathya Designers Case Study | M. Shri Lakshmi';
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'instant' });
     return () => {
       document.title = previous;
     };
