@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { useCopy } from '../../hooks/useCopy';
 import './sections.css';
-import { PostcardSlider, type PostcardSlide } from './PostcardSlider';
+import { ProjectCarousel, type ProjectItem } from './ProjectCarousel';
 import {
   AADITHYA_LIVE,
   AADITHYA_SLIDES,
@@ -137,24 +137,15 @@ export function Services() {
   );
 }
 
-type ProjectItem = {
-  id: string;
-  kind: string;
-  name: string;
-  text: string;
-  points: string[];
-  cta: string;
-  href: string;
-  caseHref?: string;
-  slides: PostcardSlide[];
-  tags: string[];
-};
-
 const PROJECTS: ProjectItem[] = [
   {
     id: 'aadithya',
     kind: 'Website design & frontend development',
     name: 'Aadithya Automation & Security Systems',
+    title: 'Aadithya',
+    subtitle: 'Automation & Security Systems',
+    cover: '/work/aadithya-hero-mobile.webp',
+    coverPosition: 'top',
     text: 'A website experience designed to help potential customers explore technical products, understand their capabilities, discover the company\'s services and initiate enquiries, taken from a broad requirement through design, frontend implementation and live deployment.',
     points: [
       'Category-based product discovery with individual product detail pages',
@@ -171,6 +162,10 @@ const PROJECTS: ProjectItem[] = [
     id: 'nest',
     kind: 'UX testing and guidance',
     name: 'Nest by Emmple',
+    title: 'Nest by Emmple',
+    subtitle: 'School operations product',
+    cover: '/work/nest.webp',
+    coverPosition: 'left top',
     text: 'I tested the product the way a new user would and guided the team on usability, so friction got named early and fixes had a clear direction.',
     points: [
       'Hands-on usability testing across student intake forms',
@@ -186,6 +181,10 @@ const PROJECTS: ProjectItem[] = [
     id: 'nand-bhabhi',
     kind: 'E-commerce website & custom admin dashboard',
     name: 'NANADHBABBHI',
+    title: 'NANADHBABBHI',
+    subtitle: 'E-commerce & admin dashboard',
+    cover: '/work/nand-bhabhi-hero.webp',
+    coverPosition: '72% center',
     text: 'An ethnic fashion e-commerce experience that brings together visual storytelling, product discovery and efficient store management, across a customer-facing storefront and a custom administration dashboard.',
     points: [
       'Video-led fashion discovery with product tagging and Shop the Look',
@@ -202,6 +201,10 @@ const PROJECTS: ProjectItem[] = [
     id: 'anusathya',
     kind: 'Freelance digital marketing',
     name: 'Shree Anusathya Designers',
+    title: 'Shree Anusathya',
+    subtitle: 'Designers',
+    cover: '/work/anusathya-dash-ig-overview.webp',
+    coverPosition: 'left top',
     text: 'Building a digital presence from the ground up through 100% organic marketing across Instagram, Pinterest and Google Business Profile, with on-site shooting, creative direction and on-camera work when content availability restricted the plan.',
     points: [
       '23,278 Instagram views and 18.1% follower growth',
@@ -218,65 +221,14 @@ const PROJECTS: ProjectItem[] = [
 
 export function Work() {
   return (
-    <section id="work" className="s-sec s-cream" aria-labelledby="work-title">
+    <section id="work" className="s-sec hc-sec" aria-labelledby="work-title">
       <Wave fill="#460607" flip />
-      <div className="s-wrap">
-        <Label>Selected work</Label>
+      <ProjectCarousel projects={PROJECTS}>
+        <Label light>Selected work</Label>
         <h2 id="work-title" className="s-title" data-reveal>
-          Real projects, <em>slidable postcards.</em>
+          Real projects, <em>up close.</em>
         </h2>
-        <p className="s-lead" data-reveal>
-          Slide through the postcards to explore screens, interactive features, and live demonstrations.
-        </p>
-        <div className="s-projects">
-          {PROJECTS.map((p, i) => (
-            <article
-              key={p.id}
-              className={`s-project ${i % 2 === 1 ? 'flip' : ''}`}
-              aria-labelledby={`${p.id}-name`}
-              data-reveal
-            >
-              <div className="s-art-postcard">
-                <PostcardSlider slides={p.slides} projectName={p.name} projectHref={p.caseHref || p.href} />
-              </div>
-              <div className="s-pcopy">
-                <p className="s-kicker">
-                  Project 0{i + 1} <i aria-hidden="true" /> {p.kind}
-                </p>
-                <h3 id={`${p.id}-name`}>{p.name}</h3>
-                <p className="s-ptext">{p.text}</p>
-                <ul className="s-points">
-                  {p.points.map((pt) => (
-                    <li key={pt}>{pt}</li>
-                  ))}
-                </ul>
-                <ul className="s-ptags" aria-label="Skills used">
-                  {p.tags.map((t) => (
-                    <li key={t}>{t}</li>
-                  ))}
-                </ul>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '18px', alignItems: 'center' }}>
-                  <a
-                    className="s-link"
-                    href={p.href}
-                    target={p.href.startsWith('#') ? undefined : '_blank'}
-                    rel={p.href.startsWith('#') ? undefined : 'noreferrer'}
-                  >
-                    {p.cta}
-                    {!p.href.startsWith('#') && <span className="sr-only"> (opens in a new tab)</span>}
-                    <Arrow />
-                  </a>
-                  {'caseHref' in p && p.href !== p.caseHref && (
-                    <a className="s-link s-link-case" href={p.caseHref}>
-                      Read the case study <Arrow />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
+      </ProjectCarousel>
     </section>
   );
 }
@@ -291,7 +243,7 @@ const STEPS = [
 export function Process() {
   return (
     <section id="process" className="s-sec s-dark" aria-labelledby="process-title">
-      <Wave fill="#f5f1e4" flip />
+      <Wave fill="#2f0506" flip />
       <div className="s-wrap">
         <Label light>How I work</Label>
         <h2 id="process-title" className="s-title" data-reveal>

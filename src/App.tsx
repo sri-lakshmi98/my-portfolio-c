@@ -34,7 +34,7 @@ const HERO_LINKS = [
   { label: 'Hire me or reach out', href: '#contact' },
 ];
 
-function Home() {
+function Home({ active }: { active: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
@@ -50,10 +50,15 @@ function Home() {
   useReveal();
 
   useEffect(() => {
+    if (!active) return;
     const target = window.location.hash.length > 1 ? document.getElementById(window.location.hash.slice(1)) : null;
     // Instant: a smooth scroll here would pass through sections that have not revealed yet.
-    target?.scrollIntoView({ behavior: 'instant' });
-  }, []);
+    if (target) {
+      target.scrollIntoView({ behavior: 'instant' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [active]);
 
   useEffect(() => {
     const heroEl = heroRef.current;
@@ -450,19 +455,29 @@ function Home() {
   );
 }
 
-function renderPage(page: PageKey) {
+function renderCaseStudy(page: PageKey) {
   if (page === 'nand-bhabhi') return <NandBhabhiCaseStudyPage />;
   if (page === 'anusathya') return <AnusathyaCaseStudyPage />;
-  return page === 'aadithya' ? <CaseStudyPage /> : <Home />;
+  return page === 'aadithya' ? <CaseStudyPage /> : null;
 }
 
 function App() {
   const route = useHashRoute();
   const { page, curtain } = usePageTransition(route);
+  // Once visited, the home page stays mounted and is only hidden, so returning to it is instant:
+  // rebuilding it means recreating every section and all of the chibi's frames.
+  const homeVisited = useRef(false);
+  const onHome = page === 'home';
+  homeVisited.current ||= onHome;
   return (
     <>
       {curtain}
-      {renderPage(page)}
+      {homeVisited.current && (
+        <div style={{ display: onHome ? undefined : 'none' }}>
+          <Home active={onHome} />
+        </div>
+      )}
+      {renderCaseStudy(page)}
     </>
   );
 }

@@ -220,6 +220,11 @@ export function GazeCanvas() {
     const tick = (now: number) => {
       const dt = lastTickAt === 0 ? 1 / 60 : Math.min(Math.max((now - lastTickAt) / 1000, 0), 0.05);
       lastTickAt = now;
+      // Hidden (phones, or the home page behind a case study): nothing to draw this frame.
+      if (!canvas.offsetWidth) {
+        frameId = window.requestAnimationFrame(tick);
+        return;
+      }
       const placed = ensureLayout();
 
       if (placed) {
