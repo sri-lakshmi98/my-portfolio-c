@@ -1,8 +1,10 @@
 import { Preloader } from './components/Preloader';
 import { useEffect, useRef, useState } from 'react';
 import { GazeCanvas } from './components/GazeCanvas';
+import { usePageTransition, type PageKey } from './components/PageTransition';
 import { CaseStudyPage } from './components/sections/CaseStudyPage';
 import { NandBhabhiCaseStudyPage } from './components/sections/NandBhabhiCaseStudyPage';
+import { AnusathyaCaseStudyPage } from './components/sections/AnusathyaCaseStudyPage';
 import { JourneySection } from './components/JourneySection';
 import {
   Contact,
@@ -32,7 +34,7 @@ const HERO_LINKS = [
   { label: 'Hire me or reach out', href: '#contact' },
 ];
 
-function Home() {
+function Home({ active }: { active: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
@@ -48,9 +50,15 @@ function Home() {
   useReveal();
 
   useEffect(() => {
+    if (!active) return;
     const target = window.location.hash.length > 1 ? document.getElementById(window.location.hash.slice(1)) : null;
-    target?.scrollIntoView();
-  }, []);
+    // Instant: a smooth scroll here would pass through sections that have not revealed yet.
+    if (target) {
+      target.scrollIntoView({ behavior: 'instant' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [active]);
 
   useEffect(() => {
     const heroEl = heroRef.current;
@@ -194,65 +202,130 @@ function Home() {
         className="relative z-[1] w-full"
       >
         {/* ========================================================
-            MOBILE VIEW (Exact Reference Card Mockup with Interactive Links)
+            MOBILE VIEW (Tablet card with live text and tab buttons)
             ======================================================== */}
-        <div className="flex md:hidden min-h-[100dvh] w-full flex-col items-center justify-center px-4 pt-10 pb-8 bg-gradient-to-b from-[#2f0506] via-[#2f0506] to-[#460607]">
-          <div className="relative mx-auto w-full max-w-[min(410px,calc((100dvh-4.5rem)*0.666))] aspect-[682/1024]">
+        <div className="flex md:hidden min-h-[100dvh] w-full flex-col items-center justify-center px-4 pt-6 pb-8 bg-gradient-to-b from-[#2f0506] via-[#2f0506] to-[#460607]">
+          {/* Every frame measurement is in cqw so the bezel lines up with the chibi cut-out at any width */}
+          <div className="relative mx-auto w-full max-w-[460px] [container-type:inline-size]">
             <img
-              src="/hero-mobile.jpg"
-              alt="Shri Lakshmi — I make ideas work from pixels to people"
-              className="h-full w-full object-contain pointer-events-none select-none drop-shadow-2xl"
+              src="/hero-chibi.png"
+              alt=""
+              className="pointer-events-none absolute top-0 right-0 z-10 w-[53.5cqw] select-none"
               loading="eager"
+              aria-hidden="true"
             />
+            {/* Big name in the open space left of the chibi, above the tablet */}
+            {/* Sized on the wrapper: the base `a { font: inherit }` rule overrides text utilities on links */}
+            <div
+              className="absolute top-[9cqw] left-[1cqw] z-10 text-[clamp(38px,12.5cqw,56px)] leading-[0.95] tracking-[-0.03em] text-white"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              <a href="#top" aria-label="Shri Lakshmi, back to top">
+                Shri
+                <br />
+                Lakshmi<span className="align-super text-[0.4em] text-[#e8453c]">®</span>
+              </a>
+            </div>
+            <div className="h-[42cqw]" />
 
-            {/* Clickable Hotspots matching reference mockup card */}
-            {/* Logo / Back to top */}
-            <a
-              href="#top"
-              className="absolute rounded-md transition-colors duration-150 active:bg-black/15 focus-visible:outline-2 focus-visible:outline-[#e8453c]"
-              style={{ top: '22.8%', left: '17.2%', width: '26.0%', height: '5.2%' }}
-              aria-label="Shri Lakshmi — Back to top"
-            />
+            <div className="rounded-[7.23cqw] bg-[#53382f] p-[1.45cqw] shadow-[0_0_0_1px_rgba(150,120,110,0.55)_inset,0_28px_60px_rgba(0,0,0,0.55)]">
+              <div className="rounded-[5.8cqw] bg-[#160c05] p-[1.45cqw]">
+                <div className="relative rounded-[4.34cqw] bg-[#f5e1c8] px-[7cqw] pt-[9cqw] pb-[6cqw] text-[#3a1a12]">
+                  <p className="max-w-[48cqw] text-[14px] leading-snug text-[#7a2a1e]">
+                    Web &amp; UI/UX Designer
+                  </p>
 
-            {/* Get in touch */}
-            <a
-              href={MAILTO}
-              className="absolute rounded-md transition-colors duration-150 active:bg-black/15 focus-visible:outline-2 focus-visible:outline-[#e8453c]"
-              style={{ top: '22.8%', left: '63.8%', width: '19.4%', height: '5.2%' }}
-              aria-label="Get in touch via email"
-            />
+                  {/* Clear the chibi's legs, which hang over the screen */}
+                  <h1
+                    className="mt-[14cqw] text-[clamp(27px,8.2cqw,38px)] font-normal leading-[1.12] tracking-[-0.015em]"
+                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                  >
+                    I make{' '}
+                    <span className="relative inline-block italic">
+                      ideas
+                      <svg
+                        className="pointer-events-none absolute -top-4 left-1/2 h-4 w-7 -translate-x-1/2 overflow-visible text-[#e8453c]"
+                        viewBox="0 0 32 18"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M8 14L4 4" />
+                        <path d="M16 13L16 2" />
+                        <path d="M24 14L28 4" />
+                      </svg>
+                    </span>{' '}
+                    work&nbsp;—<br />
+                    from pixels to{' '}
+                    <span className="relative inline-block pb-1">
+                      people.
+                      <svg
+                        className="pointer-events-none absolute -bottom-2 left-0 h-3.5 w-full overflow-visible text-[#e8453c]"
+                        viewBox="0 0 140 16"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        preserveAspectRatio="none"
+                        aria-hidden="true"
+                      >
+                        <path d="M3 6C36 3 92 2 136 6C108 9 68 11 38 12C62 13 104 12 132 10" />
+                      </svg>
+                    </span>
+                  </h1>
 
-            {/* My journey */}
-            <a
-              href="#journey"
-              className="absolute rounded-md transition-colors duration-150 active:bg-black/15 focus-visible:outline-2 focus-visible:outline-[#e8453c]"
-              style={{ top: '51.8%', left: '20.2%', width: '59.6%', height: '5.4%' }}
-              aria-label="Navigate to My Journey"
-            />
+                  <nav className="mt-8 flex flex-col gap-2.5" aria-label="Explore">
+                    {HERO_LINKS.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        className="flex min-h-[54px] items-center justify-between gap-3 rounded-2xl border border-[#3a1a12]/15 bg-white/55 px-4 py-3 text-[16px] leading-snug shadow-[0_2px_0_rgba(58,26,18,0.12)] transition duration-150 active:translate-y-[2px] active:bg-[#3a1a12] active:text-[#f5e1c8] active:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e8453c]"
+                      >
+                        <span>{link.label}</span>
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#e8453c] text-white">
+                          <svg
+                            className="h-4 w-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            aria-hidden="true"
+                          >
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <polyline points="14 6 20 12 14 18" />
+                          </svg>
+                        </span>
+                      </a>
+                    ))}
+                  </nav>
 
-            {/* What I am capable of */}
-            <a
-              href="#services"
-              className="absolute rounded-md transition-colors duration-150 active:bg-black/15 focus-visible:outline-2 focus-visible:outline-[#e8453c]"
-              style={{ top: '57.2%', left: '20.2%', width: '59.6%', height: '5.4%' }}
-              aria-label="Navigate to What I am capable of"
-            />
-
-            {/* Tools & skills I have a strong command of */}
-            <a
-              href="#skills"
-              className="absolute rounded-md transition-colors duration-150 active:bg-black/15 focus-visible:outline-2 focus-visible:outline-[#e8453c]"
-              style={{ top: '62.7%', left: '20.2%', width: '59.6%', height: '5.5%' }}
-              aria-label="Navigate to Tools and skills"
-            />
-
-            {/* Hire me or reach out */}
-            <a
-              href="#contact"
-              className="absolute rounded-md transition-colors duration-150 active:bg-black/15 focus-visible:outline-2 focus-visible:outline-[#e8453c]"
-              style={{ top: '68.3%', left: '20.2%', width: '59.6%', height: '5.5%' }}
-              aria-label="Navigate to Hire me or reach out"
-            />
+                  <div className="mt-6 flex items-end justify-between gap-4">
+                    <a
+                      href={MAILTO}
+                      className="mb-2 inline-flex items-center gap-1 text-[16px] underline underline-offset-4"
+                    >
+                      Get in touch
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                    <div
+                      className="w-fit rotate-[-6deg] pr-2 text-[20px] font-semibold leading-[1.1] text-[#7a2a1e]"
+                      style={{ fontFamily: "'Caveat', cursive, sans-serif" }}
+                      aria-hidden="true"
+                    >
+                      <span className="block">Design</span>
+                      <span className="block pl-2.5">Create</span>
+                      <span className="block pl-5">Build</span>
+                      <span className="block pl-7">Grow ♡</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -329,31 +402,31 @@ function Home() {
             </h1>
 
             <nav
-              className="mt-5 flex w-full max-w-[430px] flex-col border-t border-white/20 sm:mt-7 sm:max-w-[460px]"
+              className="mt-6 flex w-full max-w-[430px] flex-col gap-2.5 sm:mt-8 sm:max-w-[460px]"
               aria-label="Hero shortcuts"
             >
               {HERO_LINKS.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="group flex items-center justify-between border-b border-white/20 py-2 sm:py-2.5 text-[13.5px] sm:text-[14.5px] md:text-[15.5px] text-white/90 transition-colors duration-200 hover:text-white"
+                  className="group flex items-center justify-between gap-4 rounded-2xl border border-white/20 bg-white/[0.06] py-2.5 pr-2.5 pl-5 text-[14.5px] md:text-[15.5px] text-white/90 backdrop-blur-sm transition duration-200 hover:border-white hover:bg-white hover:text-[#3a1a12] active:translate-y-[1px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e8453c]"
                 >
-                  <span className="font-normal tracking-wide transition-transform duration-200 group-hover:translate-x-1">
-                    {link.label}
+                  <span className="font-normal tracking-wide">{link.label}</span>
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#e8453c] text-white transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg
+                      className="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <line x1="4" y1="12" x2="20" y2="12" />
+                      <polyline points="14 6 20 12 14 18" />
+                    </svg>
                   </span>
-                  <svg
-                    className="h-4 w-4 text-[#e8453c] transition-transform duration-200 group-hover:translate-x-1"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <line x1="4" y1="12" x2="20" y2="12" />
-                    <polyline points="14 6 20 12 14 18" />
-                  </svg>
                 </a>
               ))}
             </nav>
@@ -382,12 +455,31 @@ function Home() {
   );
 }
 
+function renderCaseStudy(page: PageKey) {
+  if (page === 'nand-bhabhi') return <NandBhabhiCaseStudyPage />;
+  if (page === 'anusathya') return <AnusathyaCaseStudyPage />;
+  return page === 'aadithya' ? <CaseStudyPage /> : null;
+}
+
 function App() {
   const route = useHashRoute();
-  if (route.startsWith('#/case-study/nand-bhabhi')) {
-    return <NandBhabhiCaseStudyPage />;
-  }
-  return route.startsWith('#/case-study/aadithya') ? <CaseStudyPage /> : <Home />;
+  const { page, curtain } = usePageTransition(route);
+  // Once visited, the home page stays mounted and is only hidden, so returning to it is instant:
+  // rebuilding it means recreating every section and all of the chibi's frames.
+  const homeVisited = useRef(false);
+  const onHome = page === 'home';
+  homeVisited.current ||= onHome;
+  return (
+    <>
+      {curtain}
+      {homeVisited.current && (
+        <div style={{ display: onHome ? undefined : 'none' }}>
+          <Home active={onHome} />
+        </div>
+      )}
+      {renderCaseStudy(page)}
+    </>
+  );
 }
 
 export default App;

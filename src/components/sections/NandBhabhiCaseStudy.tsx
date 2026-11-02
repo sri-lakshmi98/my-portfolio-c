@@ -1,55 +1,17 @@
 import './case-study.css';
 import { Label, Wave } from './Sections';
-import { PostcardSlider, type PostcardSlide } from './PostcardSlider';
+import { PostcardSlider } from './PostcardSlider';
+import { Block, Bullets, DataTable, Figure, LiveLink } from './CaseStudyParts';
+import { NAND_BHABHI_LIVE, NAND_BHABHI_SLIDES } from './workSlides';
 
-const NAND_BHABHI_SLIDES: PostcardSlide[] = [
-  {
-    src: '/work/nand-bhabhi-hero.webp',
-    title: '01 · Festive Ethnic Wear Curation',
-    caption: 'Hero campaign spotlighting bridal lehengas, silk sarees, and festival promotions with warm golden accents.',
-    tag: 'Hero & Storefront',
-    alt: 'Nand Bhabhi home page featuring festive ethnic wear, sarees, lehengas',
-  },
-  {
-    src: '/work/new-arrival.webp',
-    title: '02 · The Film Library (Video Storytelling)',
-    caption: 'Video vignettes capturing garment motion, zari weave, fabric flow, and close-up craftsmanship.',
-    tag: 'Product Discovery',
-    alt: 'More new arrivals video film library presentation for ethnic wear',
-  },
-  {
-    src: '/work/nand-bhabhi-delivery.webp',
-    title: '03 · Animated Delivery Tracking Concept',
-    caption: 'Live transit map, real-time distance calculations, and transparent Standard vs Express dispatch indicators.',
-    tag: 'Delivery Journey',
-    alt: 'Interactive animated delivery status and parcel tracking mockup',
-  },
-  {
-    src: '/work/nand-bhabhi-admin.webp',
-    title: '04 · Independent Storefront Control Center',
-    caption: '1-click seasonal theme switcher and promo customizer empowering client autonomy without developer dependency.',
-    tag: 'Admin & Operations',
-    alt: 'Nand Bhabhi storefront control center and theme customization admin panel',
-  },
-  {
-    src: '/work/nand-bhabhi-categories.webp',
-    title: '05 · Visual Collection Taxonomy',
-    caption: 'Curated shopping cards across Sarees, Kurtis, Lehengas, Anarkali & Suits, Men\'s Wear, and Kids Wear.',
-    tag: 'Merchandising',
-    alt: 'Featured collection category cards for sarees, kurtis, lehengas and suits',
-  },
+// Sampled from the storefront and dashboard screenshots.
+const PALETTE = [
+  { name: 'Warm neutrals', color: '#f0e8d8' },
+  { name: 'Burgundy accents', color: '#581828' },
+  { name: 'Dark surfaces', color: '#101018' },
 ];
 
-function Block({ id, label, children }: { id: string; label: string; children: React.ReactNode }) {
-  return (
-    <section className="cs-block" aria-labelledby={id} data-reveal>
-      <h3 id={id} className="cs-label">
-        {label}
-      </h3>
-      <div className="cs-body">{children}</div>
-    </section>
-  );
-}
+const JOURNEY = ['Product discovery', 'Content management', 'Inventory', 'Fulfilment', 'Delivery'];
 
 export function NandBhabhiCaseStudy({ page = false }: { page?: boolean }) {
   return (
@@ -58,35 +20,33 @@ export function NandBhabhiCaseStudy({ page = false }: { page?: boolean }) {
       <div className="s-wrap cs-wrap">
         <Label light>Case study</Label>
         <p className="cs-client" data-reveal>
-          Nand Bhabhi &bull; Ethnic Couture &amp; Festive Fashion
+          NANADHBABBHI
         </p>
-        <h2 id="cs-title" className="s-title cs-title" data-reveal>
-          Clothing E-commerce <em>Website</em>
+        <h2 id="cs-title" className="s-title cs-title cs-title-long" data-reveal>
+          Designing a Connected <em>Fashion Commerce Experience</em>
         </h2>
-        <p className="cs-lead" style={{ marginTop: '0.6rem', marginBottom: '1.2rem', color: '#f5f1e4' }} data-reveal>
-          A familiar vision, reimagined with thoughtful interactions and operational autonomy.
-        </p>
-        <p className="cs-tags" data-reveal>
-          Clothing E-Commerce <i aria-hidden="true">&middot;</i> Video Product Storytelling <i aria-hidden="true">&middot;</i> Delivery Transparency <i aria-hidden="true">&middot;</i> Custom Admin Panel <i aria-hidden="true">&middot;</i> UI/UX Design
-        </p>
+
+        <div className="cs-top" data-reveal>
+          <LiveLink href={NAND_BHABHI_LIVE}>View live website</LiveLink>
+        </div>
 
         {/* Quick Facts Metadata Grid */}
         <dl className="cs-meta-grid" data-reveal>
           <div className="cs-meta-item">
-            <dt>Client</dt>
-            <dd>Nand Bhabhi Clothing</dd>
+            <dt>Project</dt>
+            <dd>E-commerce Website &amp; Custom Admin Dashboard</dd>
           </div>
           <div className="cs-meta-item">
-            <dt>Role &amp; Focus</dt>
-            <dd>UI/UX Design, Strategy &amp; Interaction Architecture</dd>
+            <dt>Industry</dt>
+            <dd>Ethnic Fashion &amp; Apparel</dd>
           </div>
           <div className="cs-meta-item">
-            <dt>Key Deliverables</dt>
-            <dd>Storefront Design, Video Storytelling, Delivery Tracker &amp; Admin Panel</dd>
+            <dt>Role</dt>
+            <dd>UI/UX Designer</dd>
           </div>
           <div className="cs-meta-item">
-            <dt>Approach</dt>
-            <dd>Reference-led foundation &bull; Value-add feature proposals</dd>
+            <dt>Focus</dt>
+            <dd>E-commerce UX &middot; Video Commerce &middot; Dashboard Design &middot; Inventory &middot; Order Fulfilment</dd>
           </div>
         </dl>
 
@@ -96,192 +56,171 @@ export function NandBhabhiCaseStudy({ page = false }: { page?: boolean }) {
             <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f5e211' }} />
             Interactive Postcard Gallery &mdash; Slide through key design deliverables
           </div>
-          <PostcardSlider slides={NAND_BHABHI_SLIDES} projectName="Nand Bhabhi E-commerce" />
+          <PostcardSlider slides={NAND_BHABHI_SLIDES} projectName="NANADHBABBHI" />
         </div>
 
-        {/* Chapter 01: Project Overview */}
-        <Block id="nb-overview" label="Project overview">
-          <p>
-            Nand Bhabhi is a specialized clothing e-commerce destination created around the client's visual reference and core commercial goals. The client sought a modern online presence for festive ethnic wear, celebratory sarees, and designer bridal collections.
-          </p>
-          <p>
-            My goal was not simply to replicate a static mockup. I treated the reference image as the starting baseline, proposing three foundational innovations: <strong>sensory video storytelling</strong> for high-value garments, <strong>transparent animated delivery tracking</strong> to build customer trust, and a <strong>developer-free admin panel</strong> for everyday visual autonomy.
-          </p>
+        <Block id="nb-overview" label="01. Project Overview">
+          <p>NANADHBABBHI is an ethnic-fashion e-commerce concept developed from a client-provided website reference.</p>
+          <p>Rather than simply recreating the reference, I explored ways to connect fashion discovery, online shopping and store management through two complementary experiences:</p>
+          <Bullets
+            items={[
+              <><strong>Customer storefront:</strong> An editorial shopping experience with video-led discovery and interactive product exploration.</>,
+              <><strong>Admin dashboard:</strong> A centralised interface for managing products, inventory, orders, promotional content and delivery tracking.</>,
+            ]}
+          />
+          <p>The goal was to create a shopping experience for customers while giving the business owner greater control over store operations.</p>
         </Block>
 
-        {/* Chapter 02: The Strategic Challenge */}
-        <Block id="nb-challenge" label="The challenge">
-          <p className="cs-lead">
-            Translating visual inspiration into a distinctive, self-manageable shopping experience.
-          </p>
-          <ul className="cs-cards">
-            <li>
-              <span>01 &bull; THE FIDELITY CHALLENGE</span>
-              <h4>Bridging Reference and Usability</h4>
-              <p>
-                The client arrived with a strong visual reference. The challenge was to maintain that aesthetic charm while ensuring responsive touch targets, snappy mobile load times, and intuitive category paths.
-              </p>
-            </li>
-            <li>
-              <span>02 &bull; THE SENSORY GAP</span>
-              <h4>Overcoming Static Image Limitations</h4>
-              <p>
-                Ethnic couture relies on textile weight, zari embroidery shimmer, and fabric drape. Standard flat product photos consistently fail to convey what makes a handloom garment worth its price point.
-              </p>
-            </li>
-            <li>
-              <span>03 &bull; THE OPERATIONAL DEPENDENCY</span>
-              <h4>Eliminating Developer Bottlenecks</h4>
-              <p>
-                Fashion retail moves with festive calendars and wedding seasons. Forcing the client to contact a developer every time a banner needed updating or a seasonal coupon launched would create friction and delayed sales.
-              </p>
-            </li>
+        <Block id="nb-challenge" label="02. The Challenge">
+          <p>Traditional fashion websites rely heavily on static product images, while store owners must manage inventory, orders, promotions and fulfilment separately.</p>
+          <p>The design needed to bridge these gaps by:</p>
+          <Bullets
+            items={[
+              'Making fashion discovery more engaging.',
+              'Connecting visual inspiration directly to products.',
+              'Simplifying storefront and inventory management.',
+              'Organising orders and fulfilment workflows.',
+              'Extending the brand experience into delivery tracking.',
+            ]}
+          />
+        </Block>
+
+        <Block id="nb-customer" label="03. Customer-Facing Experience">
+          <h4 className="cs-h4 first">Editorial Fashion Storefront</h4>
+          <p>A premium visual identity combines warm ivory backgrounds, deep burgundy accents, elegant typography and large fashion imagery.</p>
+          <Figure
+            src="/work/nand-bhabhi-hero.webp"
+            alt="NANADHBABBHI home page with the headline Ethnic Wear for Every You beside a model in a pink and red saree"
+            caption="The storefront homepage."
+          />
+          <p>Structured collections, product details, size and colour selection, pricing and purchasing actions create a consistent shopping experience.</p>
+          <Figure
+            src="/work/nand-bhabhi-product.webp"
+            alt="Blush Pink Anarkali Suit product page with size, colour and quantity selection"
+            caption="A product page with size, colour and quantity selection."
+          />
+
+          <h4 className="cs-h4">Video-Led Fashion Discovery</h4>
+          <p>Fashion videos showcase garments in motion, helping customers explore fabric movement, styling and appearance beyond static photography.</p>
+          <p>Product tagging connects videos directly to catalogue items, creating a more direct path from inspiration to shopping.</p>
+          <Figure
+            src="/work/nand-bhabhi-new-arrivals.webp"
+            alt="The New Arrivals page with a tagged fashion video beside a Shop the Look product list"
+            caption="A tagged fashion video with Shop the Look alongside."
+          />
+
+          <h4 className="cs-h4">Shop the Look</h4>
+          <p>Customers can explore coordinated products within a single fashion story, connecting related items and encouraging visual product discovery.</p>
+        </Block>
+
+        <Block id="nb-admin" label="04. Custom Admin Dashboard">
+          <p>The dashboard was designed to bring essential store-management workflows into one interface.</p>
+
+          <h4 className="cs-h4">Store Overview</h4>
+          <p>Operational summaries highlight revenue, average order value, pending orders, shipments, low-stock products and return requests.</p>
+          <Figure
+            src="/work/nand-bhabhi-dashboard.webp"
+            alt="Dark admin dashboard with revenue summary, a 14-day revenue chart and a Needs attention panel"
+            caption="The store overview and its Needs attention area."
+          />
+          <p>An attention area helps administrators identify activities requiring action.</p>
+
+          <h4 className="cs-h4">Storefront &amp; Video Management</h4>
+          <p>Dedicated workflows support promotional image updates and fashion-video organisation.</p>
+          <p>Video management includes publishing states, product tagging and Shop the Look content organisation.</p>
+          <Figure
+            src="/work/nand-bhabhi-videos.webp"
+            alt="Admin Fashion videos screen with status filters and published video cards"
+            caption="Fashion video management, with status filters above the library."
+          />
+          <p>The intention is to give the store owner more control over content and routine storefront updates.</p>
+
+          <h4 className="cs-h4">Inventory &amp; Order Management</h4>
+          <p>The inventory interface includes product SKUs, size-wise stock quantities, stock indicators, search and filtering.</p>
+          <Figure
+            src="/work/nand-bhabhi-inventory.webp"
+            alt="Admin Inventory screen listing products with SKU, stock by size, total and stock level"
+            caption="Inventory with stock tracked per size."
+          />
+          <p>Order-management views organise fulfilment activities, including pending orders, shipments and returns.</p>
+          <p>These workflows are designed to make stock visibility and operational priorities easier to manage.</p>
+        </Block>
+
+        <Block id="nb-tracking" label="05. Configurable Delivery Tracking">
+          <p>One of the project's distinctive features is an admin interface for customising the customer-facing tracking experience.</p>
+
+          <h4 className="cs-h4">Tracking Widget Configuration</h4>
+          <p>Administrators can enable or disable the tracking widget and choose delivery icon styles, including parcels, trucks, vans, motorbikes and air cargo.</p>
+
+          <h4 className="cs-h4">Standard &amp; Express Delivery</h4>
+          <p>Side-by-side previews distinguish standard and express delivery through separate status indicators, estimated arrival information and route visualisations.</p>
+
+          <h4 className="cs-h4">Interactive Map Preview</h4>
+          <p>The tracking interface brings together origin and destination markers, route visualisation, delivery vehicle representation, location labels and status indicators.</p>
+          <p>Administrators can explore different destinations and shipment states through the preview.</p>
+          <p className="cs-note"><strong>Design objective:</strong> Make delivery tracking more visual and give the business greater control over the post-purchase experience.</p>
+        </Block>
+
+        <Block id="nb-analytics" label="06. Video Analytics">
+          <p>A dedicated analytics overview brings video-related information into one place, including total videos, published videos, product hotspots and shoppable content.</p>
+          <Figure
+            src="/work/nand-bhabhi-analytics.webp"
+            alt="Admin Video analytics screen with summary cards for films, hotspots and shoppable pieces"
+            caption="The video analytics overview."
+          />
+          <p>More advanced metrics, such as watch time, click-through rates and revenue attribution, would require an appropriate live analytics integration.</p>
+        </Block>
+
+        <Block id="nb-system" label="07. Visual Design System">
+          <DataTable
+            head={['Experience', 'Visual system']}
+            rows={[
+              ['Storefront', 'Warm neutrals, burgundy accents, editorial typography and prominent fashion imagery create a premium shopping identity.'],
+              ['Admin Dashboard', 'Dark surfaces, structured tables, clear status indicators and consistent information hierarchy prioritise operational clarity.'],
+            ]}
+          />
+          <ul className="cs-palette" aria-label="Colour palette">
+            {PALETTE.map((p) => (
+              <li key={p.name}>
+                <span style={{ background: p.color }} aria-hidden="true" />
+                {p.name}
+              </li>
+            ))}
           </ul>
+          <p>The two visual systems serve different needs while remaining part of one connected commerce experience.</p>
         </Block>
 
-        {/* Chapter 03: My Approach */}
-        <Block id="nb-approach" label="My approach">
-          <p className="cs-lead">
-            Treating the reference as the starting point, not the ceiling.
-          </p>
-          <p>
-            I structured the project around three interconnected pillars:
-          </p>
-          <div className="cs-metric-row">
-            <div className="cs-metric-badge">
-              <span className="cs-metric-num">01</span>
-              <span className="cs-metric-label"><strong>Storytelling:</strong> Video-led arrival reels to showcase fabric &amp; stitching detail</span>
-            </div>
-            <div className="cs-metric-badge">
-              <span className="cs-metric-num">02</span>
-              <span className="cs-metric-label"><strong>Transparency:</strong> Live package tracker with courier distance &amp; dispatch stages</span>
-            </div>
-            <div className="cs-metric-badge">
-              <span className="cs-metric-num">03</span>
-              <span className="cs-metric-label"><strong>Autonomy:</strong> 1-click theme switcher &amp; self-serve promotional controls</span>
-            </div>
-          </div>
+        <Block id="nb-outcome" label="08. Outcome">
+          <p>The project brings together a customer storefront and an administrative experience featuring:</p>
+          <Bullets
+            items={[
+              'Editorial fashion shopping and structured product discovery.',
+              'Video-led shopping with product tagging.',
+              'Shop the Look product exploration.',
+              'Storefront content customisation.',
+              'Size-based inventory and order management.',
+              'Fashion-video management and analytics overview.',
+              'Configurable delivery tracking.',
+              'Standard and Express delivery previews.',
+              'Map-based parcel visualisation.',
+            ]}
+          />
+          <p>The central design outcome is a connected commerce experience that considers both the customer's shopping journey and the business owner's operational needs.</p>
         </Block>
 
-        {/* Chapter 04: Key Innovations Deep Dive */}
-        <Block id="nb-features" label="Key innovations &amp; design decisions">
-          <div className="cs-feature-section">
-            
-            {/* Feature 01 */}
-            <article className="cs-feature-card">
-              <div className="cs-feature-info">
-                <span className="cs-feature-tag">Innovation 01</span>
-                <h4>The Film Library: New Arrivals That Move</h4>
-                <p>
-                  Instead of presenting new arrivals as ordinary photo grids, I introduced a dedicated video-first presentation layer called <em>The Film Library</em>.
-                </p>
-                <ul className="cs-feature-bullets">
-                  <li><strong>Tactile inspection:</strong> Short 5-second cinematic loops showing micro-details: gold threadwork, sequin reflection, and border hems.</li>
-                  <li><strong>Movement in action:</strong> Shows how lehengas twirl and how sarees drape when walking, eliminating customer hesitation.</li>
-                  <li><strong>Direct cart addition:</strong> Each video card includes an instantaneous 'See it. Love it. Shop it.' action hook.</li>
-                </ul>
-              </div>
-              <figure className="cs-feature-art">
-                <img
-                  src="/work/new-arrival.webp"
-                  alt="The Film Library - Video-led product presentation for Nand Bhabhi"
-                  loading="lazy"
-                />
-                <figcaption>&ldquo;The Film Library&rdquo; &mdash; Video vignettes highlighting garment movement and craftsmanship.</figcaption>
-              </figure>
-            </article>
-
-            {/* Feature 02 */}
-            <article className="cs-feature-card reverse">
-              <div className="cs-feature-info">
-                <span className="cs-feature-tag">Innovation 02</span>
-                <h4>Animated Delivery Tracking: Radical Transparency</h4>
-                <p>
-                  Ethnic wear purchases are frequently tied to critical deadlines&mdash;family weddings, poojas, and festive celebrations. Anxiety around delivery dates is the #1 reason for cart abandonment.
-                </p>
-                <ul className="cs-feature-bullets">
-                  <li><strong>Packaging animation:</strong> Visual confirmation when garments are folded, boxed, and sealed at the atelier.</li>
-                  <li><strong>Live remaining distance:</strong> An animated courier icon tracks physical kilometers remaining to the doorstep.</li>
-                  <li><strong>Express vs Standard clarity:</strong> Clear visual badges eliminate guesswork regarding transit speeds.</li>
-                </ul>
-              </div>
-              <figure className="cs-feature-art">
-                <img
-                  src="/work/nand-bhabhi-delivery.webp"
-                  alt="Animated Delivery Status concept showing route and distance information"
-                  loading="lazy"
-                />
-                <figcaption>Interactive live delivery journey concept with courier transit and distance milestones.</figcaption>
-              </figure>
-            </article>
-
-            {/* Feature 03 */}
-            <article className="cs-feature-card">
-              <div className="cs-feature-info">
-                <span className="cs-feature-tag">Innovation 03</span>
-                <h4>Storefront Control Center: 1-Click Client Autonomy</h4>
-                <p>
-                  I architected the back-office experience so the client could command their own storefront visually without touching a line of code or filing support tickets.
-                </p>
-                <ul className="cs-feature-bullets">
-                  <li><strong>Seasonal theme switcher:</strong> Shift the entire store palette in one click between Festive Crimson, Royal Sapphire, and Emerald Classic.</li>
-                  <li><strong>Instant banner builder:</strong> Upload campaign photography, edit headline copy, and activate discount pills in seconds.</li>
-                  <li><strong>Independent store management:</strong> Lowers operational overhead while allowing rapid marketing campaigns.</li>
-                </ul>
-              </div>
-              <figure className="cs-feature-art">
-                <img
-                  src="/work/nand-bhabhi-admin.webp"
-                  alt="Nand Bhabhi Storefront Control Center admin panel"
-                  loading="lazy"
-                />
-                <figcaption>Storefront Control Center: 1-click theme presets and live banner customizer.</figcaption>
-              </figure>
-            </article>
-
-          </div>
+        <Block id="nb-learning" label="Key Learning">
+          <p>This project reinforced that e-commerce design extends beyond the storefront. Product discovery, content management, inventory, fulfilment and delivery all contribute to the overall experience.</p>
+          <ol className="cs-flow" aria-label="Connected workflows">
+            {JOURNEY.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+          <p>By exploring these connected workflows, I developed a broader perspective on designing digital products that balance customer engagement with business functionality.</p>
         </Block>
 
-        {/* Chapter 05: Visual Merchandising */}
-        <Block id="nb-merchandising" label="Merchandising &amp; taxonomy">
-          <div className="cs-sidebyside">
-            <div className="cs-sidebyside-text">
-              <p>
-                A high-converting e-commerce storefront requires effortless navigation. I structured the primary taxonomy into intuitive entry points tailored for diverse customer intents:
-              </p>
-              <p>
-                Shoppers can browse by garment category, seasonal theme (e.g. Navratri Special, Bridal Trousseau), or price range, ensuring a friction-free path from discovery to checkout.
-              </p>
-            </div>
-            <figure className="cs-feature-art cs-sidebyside-img">
-              <img
-                src="/work/nand-bhabhi-categories.webp"
-                alt="Curated category navigation cards for Nand Bhabhi"
-                loading="lazy"
-              />
-              <figcaption>Curated collection cards: Sarees, Kurtis, Lehengas, Anarkali &amp; Suits, Men's Wear, and Kids Wear.</figcaption>
-            </figure>
-          </div>
-        </Block>
-
-        {/* Chapter 06: The Outcome */}
-        <Block id="nb-outcome" label="The outcome">
-          <p className="cs-lead">
-            A client-focused clothing e-commerce experience that turned a visual prompt into a living, high-conversion flagship.
-          </p>
-          <p>
-            The final result balanced the client's original design expectations with practical e-commerce enhancements that elevate the customer shopping experience. By pairing video storytelling with transparent delivery tracking and autonomous store controls, the platform serves both the shopper and the business owner seamlessly.
-          </p>
-        </Block>
-
-        {/* Chapter 07: Key Takeaway */}
         <div className="cs-quote-card" data-reveal>
-          <blockquote className="cs-quote-text">
-            Good design is not just about recreating what a client sees. It is about understanding what they need and finding thoughtful ways to make the experience work better.
-          </blockquote>
-          <span className="cs-quote-author">M. Shri Lakshmi &mdash; Design Reflection</span>
+          <blockquote className="cs-quote-text">From fashion discovery to final delivery &mdash; one connected commerce experience.</blockquote>
         </div>
-
       </div>
     </section>
   );
