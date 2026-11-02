@@ -9,7 +9,7 @@ import {
 } from './journey/illustrations';
 import './journey/journey.css';
 
-const HEADING = 'Turning ideas into digital experiences.';
+const HEADING = 'Learning. Adapting. Evolving.';
 
 type Station = {
   id: string;
@@ -296,8 +296,7 @@ export function JourneySection() {
             ))}
           </h2>
           <p className="j-lead">
-            From creative design to strategic marketing and managing operations, my journey is built on curiosity,
-            learning and a passion for creating impactful solutions.
+            Every new environment brought a different challenge, a fresh perspective, and another opportunity to grow. From exploring new skills to adapting to different ways of working, each experience has shaped how I think, collaborate, and create.
           </p>
         </div>
         <svg className="j-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false">
