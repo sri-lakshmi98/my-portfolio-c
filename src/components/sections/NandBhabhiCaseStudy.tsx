@@ -1,7 +1,7 @@
 import './case-study.css';
 import { Label, Wave } from './Sections';
 import { PostcardSlider } from './PostcardSlider';
-import { Block, Bullets, DataTable, Figure, LiveLink } from './CaseStudyParts';
+import { Block, Bullets, DataTable, Figure, LiveLink, WithFigure } from './CaseStudyParts';
 import { NAND_BHABHI_LIVE, NAND_BHABHI_SLIDES } from './workSlides';
 
 // Sampled from the storefront and dashboard screenshots.
@@ -87,27 +87,38 @@ export function NandBhabhiCaseStudy({ page = false }: { page?: boolean }) {
 
         <Block id="nb-customer" label="03. Customer-Facing Experience">
           <h4 className="cs-h4 first">Editorial Fashion Storefront</h4>
-          <p>A premium visual identity combines warm ivory backgrounds, deep burgundy accents, elegant typography and large fashion imagery.</p>
-          <Figure
-            src="/work/nand-bhabhi-hero.webp"
-            alt="NANADHBABBHI home page with the headline Ethnic Wear for Every You beside a model in a pink and red saree"
-            caption="The storefront homepage."
-          />
-          <p>Structured collections, product details, size and colour selection, pricing and purchasing actions create a consistent shopping experience.</p>
-          <Figure
-            src="/work/nand-bhabhi-product.webp"
-            alt="Blush Pink Anarkali Suit product page with size, colour and quantity selection"
-            caption="A product page with size, colour and quantity selection."
-          />
+          <WithFigure figure={
+            <Figure
+              src="/work/nand-bhabhi-hero.webp"
+              alt="NANADHBABBHI home page with the headline Ethnic Wear for Every You beside a model in a pink and red saree"
+              caption="The storefront homepage."
+            />
+          }>
+            <p>A premium visual identity combines warm ivory backgrounds, deep burgundy accents, elegant typography and large fashion imagery.</p>
+            <p>Structured collections, product details, size and colour selection, pricing and purchasing actions create a consistent shopping experience.</p>
+          </WithFigure>
+          <WithFigure reverse figure={
+            <Figure
+              src="/work/nand-bhabhi-product.webp"
+              alt="Blush Pink Anarkali Suit product page with size, colour and quantity selection"
+              caption="A product page with size, colour and quantity selection."
+            />
+          }>
+            <h4 className="cs-h4">Product Detail Pages</h4>
+            <p>Each product page brings together high-quality photography, size and colour selection, pricing, delivery information and a clear purchase path.</p>
+          </WithFigure>
 
           <h4 className="cs-h4">Video-Led Fashion Discovery</h4>
-          <p>Fashion videos showcase garments in motion, helping customers explore fabric movement, styling and appearance beyond static photography.</p>
-          <p>Product tagging connects videos directly to catalogue items, creating a more direct path from inspiration to shopping.</p>
-          <Figure
-            src="/work/nand-bhabhi-new-arrivals.webp"
-            alt="The New Arrivals page with a tagged fashion video beside a Shop the Look product list"
-            caption="A tagged fashion video with Shop the Look alongside."
-          />
+          <WithFigure figure={
+            <Figure
+              src="/work/nand-bhabhi-new-arrivals.webp"
+              alt="The New Arrivals page with a tagged fashion video beside a Shop the Look product list"
+              caption="A tagged fashion video with Shop the Look alongside."
+            />
+          }>
+            <p>Fashion videos showcase garments in motion, helping customers explore fabric movement, styling and appearance beyond static photography.</p>
+            <p>Product tagging connects videos directly to catalogue items, creating a more direct path from inspiration to shopping.</p>
+          </WithFigure>
 
           <h4 className="cs-h4">Shop the Look</h4>
           <p>Customers can explore coordinated products within a single fashion story, connecting related items and encouraging visual product discovery.</p>
@@ -117,33 +128,42 @@ export function NandBhabhiCaseStudy({ page = false }: { page?: boolean }) {
           <p>The dashboard was designed to bring essential store-management workflows into one interface.</p>
 
           <h4 className="cs-h4">Store Overview</h4>
-          <p>Operational summaries highlight revenue, average order value, pending orders, shipments, low-stock products and return requests.</p>
-          <Figure
-            src="/work/nand-bhabhi-dashboard.webp"
-            alt="Dark admin dashboard with revenue summary, a 14-day revenue chart and a Needs attention panel"
-            caption="The store overview and its Needs attention area."
-          />
-          <p>An attention area helps administrators identify activities requiring action.</p>
+          <WithFigure figure={
+            <Figure
+              src="/work/nand-bhabhi-dashboard.webp"
+              alt="Dark admin dashboard with revenue summary, a 14-day revenue chart and a Needs attention panel"
+              caption="The store overview and its Needs attention area."
+            />
+          }>
+            <p>Operational summaries highlight revenue, average order value, pending orders, shipments, low-stock products and return requests.</p>
+            <p>An attention area helps administrators identify activities requiring action.</p>
+          </WithFigure>
 
           <h4 className="cs-h4">Storefront &amp; Video Management</h4>
-          <p>Dedicated workflows support promotional image updates and fashion-video organisation.</p>
-          <p>Video management includes publishing states, product tagging and Shop the Look content organisation.</p>
-          <Figure
-            src="/work/nand-bhabhi-videos.webp"
-            alt="Admin Fashion videos screen with status filters and published video cards"
-            caption="Fashion video management, with status filters above the library."
-          />
-          <p>The intention is to give the store owner more control over content and routine storefront updates.</p>
+          <WithFigure reverse figure={
+            <Figure
+              src="/work/nand-bhabhi-videos.webp"
+              alt="Admin Fashion videos screen with status filters and published video cards"
+              caption="Fashion video management, with status filters above the library."
+            />
+          }>
+            <p>Dedicated workflows support promotional image updates and fashion-video organisation.</p>
+            <p>Video management includes publishing states, product tagging and Shop the Look content organisation.</p>
+            <p>The intention is to give the store owner more control over content and routine storefront updates.</p>
+          </WithFigure>
 
           <h4 className="cs-h4">Inventory &amp; Order Management</h4>
-          <p>The inventory interface includes product SKUs, size-wise stock quantities, stock indicators, search and filtering.</p>
-          <Figure
-            src="/work/nand-bhabhi-inventory.webp"
-            alt="Admin Inventory screen listing products with SKU, stock by size, total and stock level"
-            caption="Inventory with stock tracked per size."
-          />
-          <p>Order-management views organise fulfilment activities, including pending orders, shipments and returns.</p>
-          <p>These workflows are designed to make stock visibility and operational priorities easier to manage.</p>
+          <WithFigure figure={
+            <Figure
+              src="/work/nand-bhabhi-inventory.webp"
+              alt="Admin inventory table with product SKUs, size columns and stock-level indicators"
+              caption="The inventory table, with stock levels tracked per size."
+            />
+          }>
+            <p>The inventory interface includes product SKUs, size-wise stock quantities, stock indicators, search and filtering.</p>
+            <p>Order-management views organise fulfilment activities, including pending orders, shipments and returns.</p>
+            <p>These workflows are designed to make stock visibility and operational priorities easier to manage.</p>
+          </WithFigure>
         </Block>
 
         <Block id="nb-tracking" label="05. Configurable Delivery Tracking">
@@ -162,13 +182,16 @@ export function NandBhabhiCaseStudy({ page = false }: { page?: boolean }) {
         </Block>
 
         <Block id="nb-analytics" label="06. Video Analytics">
-          <p>A dedicated analytics overview brings video-related information into one place, including total videos, published videos, product hotspots and shoppable content.</p>
-          <Figure
-            src="/work/nand-bhabhi-analytics.webp"
-            alt="Admin Video analytics screen with summary cards for films, hotspots and shoppable pieces"
-            caption="The video analytics overview."
-          />
-          <p>More advanced metrics, such as watch time, click-through rates and revenue attribution, would require an appropriate live analytics integration.</p>
+          <WithFigure figure={
+            <Figure
+              src="/work/nand-bhabhi-analytics.webp"
+              alt="Admin Video analytics screen with summary cards for films, hotspots and shoppable pieces"
+              caption="The video analytics overview."
+            />
+          }>
+            <p>A dedicated analytics overview brings video-related information into one place, including total videos, published videos, product hotspots and shoppable content.</p>
+            <p>More advanced metrics, such as watch time, click-through rates and revenue attribution, would require an appropriate live analytics integration.</p>
+          </WithFigure>
         </Block>
 
         <Block id="nb-system" label="07. Visual Design System">

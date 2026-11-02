@@ -75,3 +75,21 @@ export function DataTable({ head, rows }: { head: string[]; rows: string[][] }) 
     </div>
   );
 }
+
+/** Side-by-side: text (left/right) + figure (opposite). Stacks on mobile. */
+export function WithFigure({
+  figure,
+  reverse = false,
+  children,
+}: {
+  figure: React.ReactNode;
+  reverse?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className={`cs-with-figure${reverse ? ' reverse' : ''}`}>
+      <div className="cs-with-figure-text">{children}</div>
+      <div className="cs-with-figure-img">{figure}</div>
+    </div>
+  );
+}

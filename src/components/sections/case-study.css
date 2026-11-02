@@ -728,3 +728,53 @@
     padding: 10px 12px;
   }
 }
+
+/* ==========================================================
+   WITH-FIGURE: text left (55%), image right (45%)
+   Stacks on mobile (≤ 820px)
+   ========================================================== */
+.cs-with-figure {
+  display: grid;
+  grid-template-columns: 55% 1fr;
+  gap: 28px;
+  align-items: start;
+  margin: 8px 0 20px;
+}
+
+.cs-with-figure.reverse {
+  grid-template-columns: 1fr 55%;
+}
+
+.cs-with-figure.reverse .cs-with-figure-text {
+  order: 2;
+}
+
+.cs-with-figure.reverse .cs-with-figure-img {
+  order: 1;
+}
+
+.cs-with-figure-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-with-figure-text p:last-child {
+  margin-bottom: 0;
+}
+
+.cs-with-figure-img .cs-figure {
+  margin: 0;
+}
+
+@media (max-width: 820px) {
+  .cs-with-figure,
+  .cs-with-figure.reverse {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .cs-with-figure.reverse .cs-with-figure-text,
+  .cs-with-figure.reverse .cs-with-figure-img {
+    order: unset;
+  }
+}

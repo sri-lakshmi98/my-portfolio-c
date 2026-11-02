@@ -1,7 +1,7 @@
 import './case-study.css';
 import { Label, Wave } from './Sections';
 import { PostcardSlider } from './PostcardSlider';
-import { Block, Bullets, DataTable, Figure, LiveLink } from './CaseStudyParts';
+import { Block, Bullets, DataTable, Figure, LiveLink, WithFigure } from './CaseStudyParts';
 import { AADITHYA_LIVE, AADITHYA_SLIDES } from './workSlides';
 
 // Sampled from the live site's screenshots.
@@ -91,24 +91,30 @@ export function CaseStudy({ page = false }: { page?: boolean }) {
               </li>
             ))}
           </ul>
-          <p>The homepage features a cinematic industrial setting and the headline:</p>
-          <p className="cs-lead">"Your Property, Under Your Control."</p>
-          <Figure
-            src="/work/aadithya-hero.webp"
-            alt="Aadithya home page with an industrial building at sunset and the headline Your Property, Under Your Control"
-            caption="The homepage hero and its direct route into the catalogue."
-          />
-          <p>The design balances a strong visual impression with clear navigation and a direct route to product discovery.</p>
+          <WithFigure figure={
+            <Figure
+              src="/work/aadithya-hero.webp"
+              alt="Aadithya home page with an industrial building at sunset and the headline Your Property, Under Your Control"
+              caption="The homepage hero and its direct route into the catalogue."
+            />
+          }>
+            <p>The homepage features a cinematic industrial setting and the headline:</p>
+            <p className="cs-lead">"Your Property, Under Your Control."</p>
+            <p>The design balances a strong visual impression with clear navigation and a direct route to product discovery.</p>
+          </WithFigure>
         </Block>
 
         <Block id="cs-catalogue" label="04. Product Discovery &amp; Multimedia Experience">
-          <p>I structured the catalogue into categories such as IP cameras, access control, fire alarms, storage and networking equipment.</p>
-          <Figure
-            src="/work/aadithya-catalogue.webp"
-            alt="Aadithya product catalogue with category filters and IP camera product cards"
-            caption="Category filters above consistent product cards."
-          />
-          <p>Consistent product cards help visitors browse equipment, while dedicated product pages organise specifications, key features, installation information and enquiry actions.</p>
+          <WithFigure figure={
+            <Figure
+              src="/work/aadithya-catalogue.webp"
+              alt="Aadithya product catalogue with category filters and IP camera product cards"
+              caption="Category filters above consistent product cards."
+            />
+          }>
+            <p>I structured the catalogue into categories such as IP cameras, access control, fire alarms, storage and networking equipment.</p>
+            <p>Consistent product cards help visitors browse equipment, while dedicated product pages organise specifications, key features, installation information and enquiry actions.</p>
+          </WithFigure>
           <h4 className="cs-h4">Beyond Static Product Images</h4>
           <p>To help customers understand technical products in context, I introduced a multimedia showcase featuring:</p>
           <Bullets
@@ -121,31 +127,40 @@ export function CaseStudy({ page = false }: { page?: boolean }) {
               'Mobile and desktop remote-monitoring visuals.',
             ]}
           />
-          <Figure
-            src="/work/aadithya-product.webp"
-            alt="Detail page for the 2 MP Network IR Dome Camera showing a ceiling and wall mounting demonstration"
-            caption="A product page with its mounting demonstration in the media area."
-          />
-          <p>This approach extends product presentation beyond specifications, helping visitors explore how equipment looks and functions in practical environments.</p>
+          <WithFigure reverse figure={
+            <Figure
+              src="/work/aadithya-product.webp"
+              alt="Detail page for the 2 MP Network IR Dome Camera showing a ceiling and wall mounting demonstration"
+              caption="A product page with its mounting demonstration in the media area."
+            />
+          }>
+            <p>This approach extends product presentation beyond specifications, helping visitors explore how equipment looks and functions in practical environments.</p>
+          </WithFigure>
         </Block>
 
         <Block id="cs-navigation" label="05. Navigation &amp; Interactive Design">
           <h4 className="cs-h4">Floating Mobile Navigation</h4>
-          <p>A compact, icon-led side tab provides quick access to Home, Products, Services, Clients, FAQs, Updates and Contact, with a highlighted active state.</p>
-          <Figure
-            phone
-            src="/work/aadithya-hero-mobile.webp"
-            alt="Aadithya mobile home page with a floating vertical icon navigation tab on the right edge"
-            caption="The floating, icon-led side tab on mobile."
-          />
+          <WithFigure figure={
+            <Figure
+              phone
+              src="/work/aadithya-hero-mobile.webp"
+              alt="Aadithya mobile home page with a floating vertical icon navigation tab on the right edge"
+              caption="The floating, icon-led side tab on mobile."
+            />
+          }>
+            <p>A compact, icon-led side tab provides quick access to Home, Products, Services, Clients, FAQs, Updates and Contact, with a highlighted active state.</p>
+          </WithFigure>
           <h4 className="cs-h4">Interactive 3D Client Carousel</h4>
-          <p>A layered carousel gives the client showcase a distinctive visual presentation, allowing visitors to explore displayed organisations through an interactive interface.</p>
-          <Figure
-            src="/work/aadithya-clients.webp"
-            alt="Aadithya Clients section with a layered 3D carousel of client logo cards"
-            caption="The layered 3D client carousel."
-          />
-          <p>Both features introduce more engaging ways to navigate and explore the website.</p>
+          <WithFigure reverse figure={
+            <Figure
+              src="/work/aadithya-clients.webp"
+              alt="Aadithya Clients section with a layered 3D carousel of client logo cards"
+              caption="The layered 3D client carousel."
+            />
+          }>
+            <p>A layered carousel gives the client showcase a distinctive visual presentation, allowing visitors to explore displayed organisations through an interactive interface.</p>
+            <p>Both features introduce more engaging ways to navigate and explore the website.</p>
+          </WithFigure>
         </Block>
 
         <Block id="cs-content" label="06. Content &amp; Customer Enquiries">
@@ -158,17 +173,25 @@ export function CaseStudy({ page = false }: { page?: boolean }) {
               ['Contact & Request a Quote', 'A centralised enquiry experience combining business information, working hours, address and a form for customer requirements.'],
             ]}
           />
-          <Figure
-            src="/work/aadithya-faq-updates.webp"
-            alt="Aadithya Common Questions page with the Updates dropdown menu open"
-            caption="The FAQs page with the Updates menu open."
-          />
-          <Figure
-            src="/work/aadithya-contact.webp"
-            alt="Aadithya contact page with contact details beside the Request a Quote form"
-            caption="Contact details alongside the Request a Quote form."
-          />
-          <p>These features establish a foundation for customer education, content publishing and future enquiry-flow improvements.</p>
+          <WithFigure figure={
+            <Figure
+              src="/work/aadithya-faq-updates.webp"
+              alt="Aadithya Common Questions page with the Updates dropdown menu open"
+              caption="The FAQs page with the Updates menu open."
+            />
+          }>
+            <p>The FAQs page organises common questions around security and automation topics for quick browsing.</p>
+          </WithFigure>
+          <WithFigure reverse figure={
+            <Figure
+              src="/work/aadithya-contact.webp"
+              alt="Aadithya contact page with contact details beside the Request a Quote form"
+              caption="Contact details alongside the Request a Quote form."
+            />
+          }>
+            <p>The contact page brings business details and the enquiry form together, creating a single entry point for customer requirements.</p>
+            <p>These features establish a foundation for customer education, content publishing and future enquiry-flow improvements.</p>
+          </WithFigure>
         </Block>
 
         <Block id="cs-deployment" label="07. Development &amp; Live Deployment">
