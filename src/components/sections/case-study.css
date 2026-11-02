@@ -88,7 +88,7 @@
 }
 
 .cs-body {
-  max-width: 44rem;
+  max-width: 100%;
   font-size: 18px;
   line-height: 1.65;
   color: rgba(245, 241, 228, 0.88);
@@ -96,6 +96,12 @@
 
 .cs-body p {
   margin: 0 0 1.1em;
+}
+
+/* Text-only blocks: constrain reading width */
+.cs-body--prose p,
+.cs-body--prose > *:not(.cs-feature-section):not(.cs-metric-row):not(.cs-cards) {
+  max-width: 44rem;
 }
 
 .cs-lead {
@@ -531,5 +537,32 @@
   }
   .cs-feature-card.reverse .cs-feature-art {
     order: 0;
+  }
+}
+
+/* ==========================================================
+   SIDE-BY-SIDE: text left, image right (generic helper)
+   ========================================================== */
+.cs-sidebyside {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.cs-sidebyside-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cs-sidebyside-img {
+  margin: 0 !important;
+}
+
+@media (max-width: 820px) {
+  .cs-sidebyside {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }

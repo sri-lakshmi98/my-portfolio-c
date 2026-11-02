@@ -244,20 +244,24 @@ export function NandBhabhiCaseStudy({ page = false }: { page?: boolean }) {
 
         {/* Chapter 05: Visual Merchandising */}
         <Block id="nb-merchandising" label="Merchandising &amp; taxonomy">
-          <p>
-            A high-converting e-commerce storefront requires effortless navigation. I structured the primary taxonomy into intuitive entry points tailored for diverse customer intents:
-          </p>
-          <figure className="cs-feature-art" style={{ margin: '20px 0 28px' }}>
-            <img
-              src="/work/nand-bhabhi-categories.webp"
-              alt="Curated category navigation cards for Nand Bhabhi"
-              loading="lazy"
-            />
-            <figcaption>Curated collection cards: Sarees, Kurtis, Lehengas, Anarkali &amp; Suits, Men's Wear, and Kids Wear.</figcaption>
-          </figure>
-          <p>
-            Shoppers can browse by garment category, seasonal theme (e.g. Navratri Special, Bridal Trousseau), or price range, ensuring a friction-free path from discovery to checkout.
-          </p>
+          <div className="cs-sidebyside">
+            <div className="cs-sidebyside-text">
+              <p>
+                A high-converting e-commerce storefront requires effortless navigation. I structured the primary taxonomy into intuitive entry points tailored for diverse customer intents:
+              </p>
+              <p>
+                Shoppers can browse by garment category, seasonal theme (e.g. Navratri Special, Bridal Trousseau), or price range, ensuring a friction-free path from discovery to checkout.
+              </p>
+            </div>
+            <figure className="cs-feature-art cs-sidebyside-img">
+              <img
+                src="/work/nand-bhabhi-categories.webp"
+                alt="Curated category navigation cards for Nand Bhabhi"
+                loading="lazy"
+              />
+              <figcaption>Curated collection cards: Sarees, Kurtis, Lehengas, Anarkali &amp; Suits, Men's Wear, and Kids Wear.</figcaption>
+            </figure>
+          </div>
         </Block>
 
         {/* Chapter 06: The Outcome */}
