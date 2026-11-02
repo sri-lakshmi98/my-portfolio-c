@@ -19,7 +19,7 @@ export function pageOf(route: string): PageKey {
 function labelOf(route: string) {
   switch (pageOf(route)) {
     case 'nand-bhabhi':
-      return { eyebrow: 'Case study', title: 'NANADHBABBHI' };
+      return { eyebrow: 'Case study', title: 'Nand Bhabhi' };
     case 'anusathya':
       return { eyebrow: 'Case study', title: 'Shree Anusathya Designers' };
     case 'aadithya':

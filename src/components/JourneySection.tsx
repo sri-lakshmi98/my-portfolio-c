@@ -66,7 +66,7 @@ const STATIONS: Station[] = [
   },
   {
     id: 'nand-bhabhi',
-    title: 'NANADHBABBHI',
+    title: 'Nand Bhabhi',
     line: 'E-commerce & admin dashboard',
     text: 'Extended a client website reference into a connected fashion commerce experience: video-led discovery and Shop the Look for customers, plus a custom dashboard for inventory, orders, fashion videos and configurable delivery tracking.',
     tags: ['E-commerce UX', 'Video commerce', 'Dashboard design'],

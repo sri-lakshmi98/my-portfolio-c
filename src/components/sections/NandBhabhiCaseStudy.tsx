@@ -20,7 +20,7 @@ export function NandBhabhiCaseStudy({ page = false }: { page?: boolean }) {
       <div className="s-wrap cs-wrap">
         <Label light>Case study</Label>
         <p className="cs-client" data-reveal>
-          NANADHBABBHI
+          Nand Bhabhi
         </p>
         <h2 id="cs-title" className="s-title cs-title cs-title-long" data-reveal>
           Designing a Connected <em>Fashion Commerce Experience</em>
@@ -56,11 +56,11 @@ export function NandBhabhiCaseStudy({ page = false }: { page?: boolean }) {
             <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f5e211' }} />
             Interactive Postcard Gallery &mdash; Slide through key design deliverables
           </div>
-          <PostcardSlider slides={NAND_BHABHI_SLIDES} projectName="NANADHBABBHI" />
+          <PostcardSlider slides={NAND_BHABHI_SLIDES} projectName="Nand Bhabhi" />
         </div>
 
         <Block id="nb-overview" label="01. Project Overview">
-          <p>NANADHBABBHI is an ethnic-fashion e-commerce concept developed from a client-provided website reference.</p>
+          <p>Nand Bhabhi is an ethnic-fashion e-commerce concept developed from a client-provided website reference.</p>
           <p>Rather than simply recreating the reference, I explored ways to connect fashion discovery, online shopping and store management through two complementary experiences:</p>
           <Bullets
             items={[
@@ -90,7 +90,7 @@ export function NandBhabhiCaseStudy({ page = false }: { page?: boolean }) {
           <WithFigure figure={
             <Figure
               src="/work/nand-bhabhi-hero.webp"
-              alt="NANADHBABBHI home page with the headline Ethnic Wear for Every You beside a model in a pink and red saree"
+              alt="Nand Bhabhi home page with the headline Ethnic Wear for Every You beside a model in a pink and red saree"
               caption="The storefront homepage."
             />
           }>

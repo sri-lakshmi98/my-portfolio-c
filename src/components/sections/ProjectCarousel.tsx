@@ -158,7 +158,7 @@ function ProjectPanel({ project, index, total }: { project: ProjectItem; index: 
       </div>
 
       <h3 className="hc-panel-title">{project.title}</h3>
-      <p className="hc-panel-sub">{project.subtitle}</p>
+      {project.subtitle ? <p className="hc-panel-sub">{project.subtitle}</p> : null}
       <p className="hc-panel-text">{project.text}</p>
 
       <ul className="hc-tags" aria-label="Skills used">
@@ -408,7 +408,7 @@ export function ProjectCarousel({ projects, children }: { projects: ProjectItem[
                 </span>
                 <span className="hc-card-label">
                   <strong>{p.title}</strong>
-                  <small>{p.subtitle}</small>
+                  {p.subtitle ? <small>{p.subtitle}</small> : null}
                 </span>
               </TiltSurface>
             </a>
